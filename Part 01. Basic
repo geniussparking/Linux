@@ -1,1 +1,554 @@
+Day 1
 
+VNC: Virtual Network Computing  协议 远程桌面分享工具，C/S，服务端和客户端；
+
+如何获取老师讲课的课件，文档，学习资料，课堂笔记，ftp://  ftp server
+
+
+Linux运维课程体系大纲
+	就业班（基础）
+	架构师班（高级）
+
+	Linux入门（第一阶段）
+	Linux系统管理
+	Linux服务及安全管理
+		httpd, lamp, lnmp
+		Cache: memchached, varnish
+		DB: mysql (mariadb)
+	Linux Cluster:
+		LB Cluster: Nginx, LVS
+		HA Cluster: Keepalived
+	Linux Ops: ansible
+	Monitoring: zabbix
+	shell脚本编程
+	
+	http:（第二阶段）
+		tomcat, lnmt, lamt, session replication cluster
+		分布式存储系统
+			MogileFS, GlusterFS
+		LB Cluster: haproxy
+		HA Cluster: Corosync+Pacemaker, pcs/crmsh
+		MySQL: HA Cluster  MHA  备份恢复工具使用 MySQL Replcation Read-Write splitting
+		NoSQL: redis, mongodb, HBase
+		运维工具：puppet目前比较成熟完整的自动化工具 [saltstack不成熟], cobbler
+		虚拟化：
+			Linux操作系统原理，虚拟化技术原理；
+			kvm虚拟化应用详解
+			xen虚拟化已经快被淘汰
+			虚拟化网络：比较复杂，纯软件虚拟路由器，交换机... SDN：软件定义的网络
+			OpenStack:云栈
+		Docker: 容器
+		Docker云
+		ELK Stack: 日志分析工具 --> ElasticSearch: 搜索任何文件 Logstash 日志搜集工具，Kibana: 日志展示工具
+		大数据：Hadoop v2, 并行存储及分析平台
+			HBase, Hive
+			Storm, Spark
+		系统优化
+		Python编程
+			
+	RedHat: 红帽认证考试
+		RHCSA
+		RHCE
+		RHCA
+				
+	IT技术领域
+		研发：
+			硬件：接口
+				CPU(运算器和控制器）,内存，输入输出设备 
+					冯诺依曼体系
+				机器语言：二进制指令，二进制数据（最底层）
+				
+			软件：
+				汇编语言：用人类的自然语言在表述机器语言，低级语言,汇编器，写驱动程序
+				高级语言：编译器
+					系统级：C, C++ 开发操作系统，性能要求较高的项目：MySQL Oracle等等，成才很难
+					应用级：Java, Python， Ruby 离人近，离机器远,写应用程序
+				程序员写的程序代码，编程语言（低级和高级）
+		应用：
+			Linux运维,用别人写好的应用程序
+				shell脚本编程：让某些应用工作能自动完成
+				Python：专业编程语言--> ansible openstack
+			
+			DevOps:
+				Development
+				Operation
+			
+			
+	计算机与操作系统
+		ENIARC(最早）：
+			CPU: 运算器，控制器，寄存器（存储器），缓存（123级缓存），寄存和缓存是用老加速的；
+				CPU自己会有一些指令集，例如有加减乘除等功能；指令集：特权指令，普通指令
+				CPU内部的缓存越大，价格越高，缓存为王，缓存高一倍，价格可能高的离谱
+			存储器：内存，RAM（Random Access Memory，随机存储器）
+				一个Cell: 8bits位 -->1Bytes字节 最小存储单元，
+			Input：下指令，提供数据等
+			Output：输出数据加工后的结果
+		程序：指令+数据
+			  算法+数据结构（数据包大小，结构等）
+		
+		过程式编程语言：
+			顺序执行：执行一遍整个指令
+			循环执行：将整个循环执行N次
+			选择执行：仅执行其中一个分支
+		
+		多任务：multi tasks
+			起初不能多任务，后来加入监控程序，用来调配
+			内存通过空间去划分多个
+			CPU通过时间划分
+			Bell实验室，MIT麻省理工，GE通用电气--> 他们写了一个监控程序Multics
+			
+			Bell的Ken Thompson: Space Travel游戏--> 
+			DEC: PDP-11小型机，VAX（VMS）
+			1969年前后Ken在PDP-7上写程序：汇编语言---> Unics --> 改名成Unix，设计没有硬伤，很精良
+			Unix 1971年，Bell实验室要为自己进行文字处理，写了nroff，对Unix不断进行改进
+			1972年，Unix的装机量在Bell达到10台
+			最开始是B语言写的，是解释型语言，汇编语言，与底层结合太紧密；
+			B：Dennis Ritch 把B语言改成了C语言
+			1973年，Ken和Dennis一起用C语言重写整个Unix，C语言与cpu没有关系，只有汇编器（编译器）与CPU有关系，编译器将底层CPU的不同指令抹平了
+			使用C语言改写Unix后，是要编译器支持，使得Unix可以装在任何机器上；
+			1979年证实，把Unix改用C语言写是成功的；
+			当时的Bell实验室属于AT&T，当时AT&T在被反垄断诉讼，不能销售任何电话电报相关的产品，只能无偿提供；
+			当时很多大学机构免费获取了Unix，使得Unix可以被研究改进，然后反馈给了Bell实验室；
+			1979年，AT&T:System V7
+			1978年，SCO包装发行商用Unix
+			1980年：Microsoft, 售卖UNIX的变种XENIX
+			Berkeley: Ken,Berkeley去任教，使得Berkeley走在前沿
+				Bill Joy, BSRG, 1977, BSD(Berkeley System Distribution)
+			1980年，DARPA国防部高级研究署  TCP/IP，DARPA将TCP/IP的合同给了Berkeley
+			1983年，TCP/IP协议诞生在了Unix系统上
+			1981年，Microsoft，Bill Gates
+				当时西雅图的SCP的程序员研发了QDOS（Quick and Dirty Operating System），当时UNIX跑在摩托罗拉的CPU上
+				第一代的pc兼容机是由intel生产的CPU，性能太差，跑不了UNIX
+				Bill 5万美元直接买断了QDOS的授权，然后进行了修补，后来通过他母亲在IBM懂事会的身份拿到了IBM PC兼容机的订单
+				Bill只卖授权，每台PC兼容机给Bill授权费，Bill赚到上亿身价；
+			DOS 2.0, 光芒胜过CP/M，直到1990年，微软开发DOS都是用的Unix
+			SUN: Bill Joy，卖工作站workstation
+			APPLE诞生，卖PC机
+				XEROX: PARK（star图形操作系统）还发明了以太网和鼠标，将专利免费提供给社会
+				乔布斯买到了star，Bill从乔布斯也拿到了star，回去就在dos上研究开发图形界面系统，
+				Bill赶在乔布斯前面卖给了乔布斯的生意伙伴，并且发布了windows
+				Bill拉拢了VMS的一伙人开发改进windows--> windows NT（new technology）
+			System V Unix 和BSD打官司，UNIX在这10年因为打官司没落了，微软成长起来；
+			1985年：Richard Stallman，GNU运动，GNU is not Unix，is free; GPL: Genreal Public License；FSF：free software foundation
+				任何软件只要遵守GPL协定，那就是free的，自由的，可以获取源代码的；
+				X-Window加入GPL，为unix做图形界面
+				gcc: gnu c complier
+				vi: visual interface
+				... ...
+				
+			
+			
+			商业版UNIX：自己加功能，不公布阻碍发展
+				SUN: Solaris
+				IBM: AIX
+				HP: HP-UX
+				
+			Andrew: Minix, 4000行的unix
+			
+			1990： BSD 将System V的代码慢慢移除？
+					Jolitz,尝试将BSD移植到x86上，后来因为反对商业化，将研究成果全部删除；
+					1992年386-BSD继续
+			1991年8月：Linus Torvalds宣布成立Linux    GPL
+			
+			Larry Wall, patch工具，可以部分修改代码
+			上面说的所有的系统（BSD,Linux,Minix,System v），其实都是Kernel,不包括应用程序，kernel包含控制器和驱动等等
+			完整的OS: Kernel+Application
+			狭义OS: Kernel
+			
+			Linus提供Kernel, GNU提供application --> GNU/Linux
+			Mac BSD系统
+			Andriod Linux
+			
+			os接口有两类：接口也是应用程序
+				GUI：Graphic User Interface
+						GNome:C语言开发，研发环境gtk
+						KDE: c++, qt
+				CLI: Command Line Interface
+					bash
+					zsh
+					csh
+					tcsh
+					ksh
+			操作系统的功能：
+				驱动程序
+				进程管理
+				安全
+				网络功能
+				内存管理
+				文件系统
+				........
+				
+			API: Application Program Interface  程序员面对的编程接口
+			ABI: Application Binary Interface 	程序应用者面对的运行程序接口
+			
+			硬件--操作系统，驱动--库  编程的时候可以进行系统调用system call，也可以调用库Library, 
+			如果不同的操作系统提供的Library调用接口一样，那开发出来的应用程序就可以通用
+			POSIX: Portable Operation System 可移植操作系统
+			
+			GNU:
+				提供源码：需要编译成二进制格式才能在操作系统上运行
+				Linux是所有志愿者把不同部分的源码编译成二进制文件后才能使用的
+				发行版：数百种，不同组织对源码进行编译的时候的理解是不同的，所以有不同的特性和版本
+				主流发行版本：
+				Debian：Ubuntu是基于debian的二次发行版本
+							mint 桌面做的很好
+						Knopix 以安全著称
+				Slackware--S.U.S.E
+							SLES：suse linux enterprise system
+							openSUSE
+				RedHat：
+					--Centos基于红帽企业版的二次发行,CentOS和RHEL是完全兼容的，CentOS是由红帽提供的源码，社区编译再发行出来的系统
+					RedHat 9.0
+							--RedHat Enterprise Linux: RHEL
+								--CentOS: Community Enterprise OS
+				
+				RedHat CentOS 各个Linux的发行版本和Linux的关系：Linux是由GNU组织提供应用，使用Linux内核的操作系统，但是GNU组织只提供源码，
+				源码还需要编译成系统才能使用，所有的发行版本都是不同的组织编译出来的；
+				
+		软件程序：版本号
+				major, minor, release
+				Linux: 0.99, 2.2, 2.4, 2.6, 3.0, 4.0 Linux内核官网：www.kernel.org 
+		发行版本也有自己的版本号：
+			REHL:5.x 6.x 7.x 	
+				Fedora 23
+			Debian: 8.x 
+			OpenSuSE: 13.x 
+		作业：开源协定相关
+			GPL, BSD, Apache
+			Android
+		
+回顾：
+	Debian, Slackware, RedHat
+		Debian:
+			Ubuntu
+			Knopix 
+		Slackware:
+			S.u.S.E 
+				OenSUSE
+		RedHat:
+			Fedora
+			CentOS
+	
+	Linux: 
+		Linux仅仅是内核 + GNU组织各种Application = 完整操作系统
+		GNU/Linux: 通常以源码（文本格式）方式提供
+					自由、灵活
+		编码：文本格式的源码使用编译器将源码编译成对应的机器能运行的程序	
+		GNU组织下的开源协定：GPL 流毒无穷
+		BSD也是开源协定，比较宽松
+	Linux基础：CPU架构
+		x86 兼容CPU
+		x64(通常叫AMD64，64架构是最先由AMD研发的)
+		m68000 -- m68k 摩托罗拉cpu
+		arm架构 常用手持移动设备的cpu
+		sparc 斯坦福大学研发
+		power IBM的很强悍的CPU，全球第一款双核 四核 64核，第一款主频超过4GHZ的CPU
+		powerpc简装版power cpu, 由苹果，IBM，摩托罗拉合起来研发，早期苹果工作站都是power cpu
+		MIPS 
+		HP的Alpha 跑hp-ux 
+	指令集：复杂指令集 精简指令集
+	
+	硬件：机器语言，对程序员来说太难了
+	所以，厂商生产完硬件，提供微码编程接口--汇编语言，汇编程序员调用汇编语言接口来写程序，写好的程序需要一个汇编器转换成机器语言才能在硬件上执行
+	使用汇编语言写的任何操作系统都是直接在硬件上运行的，所以那时候写的操作系统很难移植
+	后来出现了POSIX规范，统一标准，可移植操作系统
+	后来出现高级语言（c,c++）写操作系统，和cpu没有密切关系了，这种高级语言需要先编译成对应的cpu能执行的机器语言
+	编译的过程：可以针对正在运行的CPU架构编译，也可以交叉编译（cross compile），可以运行在别的CPU架构上, 实现了代码的移植
+	注：编译完成的机器语言就不能再移植
+	
+	Stallman: GNU运动
+	开源协定：GNU的GPL，General Public License, 流毒无穷，只要沾边GPL的代码，所有代码成GPL的版权，后来阻碍GPL运动开展；
+				后来产生LGPL：Lesser GPL, 更宽松的GPL-- 调用了GPL的库，不用开源，但是还是不够自由，现在GPL V2 V3
+			下面两个是比较宽松的协定：可以拿来修改后包装成商业版本，只要不说是BSD或Apache协定的代码就行
+			相当于说代码可以随意借用和修改，很自由，全凭自由，更加符合自由软件精神
+			BSD开源协定：
+			Apache开源协定：ASF -- Apache Software Foundation,非常流行, 风头正盛
+			Apache和BSD极大的促进了开源运动
+			
+	双线授权：
+		遵循开源协定的源码，社区版本，任何人都可以拿去使用
+		商业授权版本，卖增值服务和额外功能---企业版
+	
+	程序管理：
+		程序的组成部分：	
+			二进制程序：一个程序能运行的内容
+			配置文件：通常是文本文件，XML文件
+			库文件
+			帮助文件
+		程序包管理器：
+			程序的组成文件打包成一个或有限几个文件
+			完成安装操作
+			完成卸载操作
+			查询功能
+		Debian：dpkg/deb, apt-get(前端管理器)
+		RedHat: rpm, yum, yum的升级版 --> dnf
+		S.u.S.E: rpm, zypper
+		ArchLinux: port 
+		Gentoo: 需要边安装边编译的，最适合机器的环境，性能上好很多
+		LFS: Linux From Scratch Linux从零开始构建， 需要自己下载源码，自己编译的Linux，最纯净的Linux, 能了解整个Linux的各个部分，完完全全的了解Linux
+		Kali: 内置各种渗透工具的Linux
+	安装Linux:
+		虚拟机方式：使用软件虚拟化各个硬件
+			计算机：CPU 内存 IO 
+				CPU 网卡：时序复用 
+				内存 硬盘：空间复用 
+				IO鼠标键盘显示器：捕获焦点 
+		虚拟化软件程序：
+			vmware workstation
+			virtualbox
+	
+	CentOS 7 操作:
+		设置语言环境：localectl list-locales 查看有哪些语言可以设置
+					设置成中文的：localectl set-locale LANG=zh_CN.uft8
+					设置回英文：localectl set-locale LANG=en_US.utf8
+	终端：terminal
+		用户界面：
+			GUI:
+				GNome
+				KDE
+			CLI:
+				bash zsh sh csh tcsh ksh
+	远程连接：
+		查看ssh协议是否开启: ~]# ss -tnl, 查看系统是否监听于tcp协议的22号端口
+		~]# ifconfig 查看ip, 或者使用命令 ip addr list, 找到inet开头的，找到IP地址
+		确保防火墙处于关闭状态
+			1. iptables -L -n 
+			2. iptables -F 
+			CentOS 7:
+				systemctl diable firewalld.service  关掉当前的防火墙
+				systemctl stop firewalld.service	永久关闭防火墙
+			CentOS 6:
+				service iptables stop
+				chkconfig iptables off
+	常用命令：
+		echo $SHELL 查看当前所用shell类型
+	终端设备：terminal
+			多任务 多用户
+			物理终端，控制台：console
+			虚拟终端：默认6个，使用ctrl+alt+F(1-6)进行切换，相当于多用户登录,然后startx启动图形终端
+			图形终端：CentOS 6: ctrl+alt+F7  直接进入图形终端
+			串行终端：ttyS
+			伪终端：pty 用ssh远程连接的界面，图形界面的terminal
+	Linux的哲学思想之一：一切皆文件
+			表现之一：硬件设备也通过文件表示
+				物理终端：/dev/console
+				虚拟终端：/dev/tty+数字[1,6]  /dev/tty#   #表示数字    
+				串行终端：/dev/ttyS#
+				伪终端：/dev/pts/# 
+			使用tty命令就可以查看当前终端号，在系统里面使用terminal的时候会输出：/dev/tty#   用ssh连接后会输出/dev/pts/#
+				
+	注意：在启动设备之后，在其上关联一个用户接口程序，即可实现与用户交互
+			查看终端设备：tty
+			查看接口程序：echo $SHELL
+			启动GUI： 虚拟终端接口：startx &
+	
+	CLI: 命令行接口，prompt 
+			[root@localhost ~]# COMMAND 
+				prompt:
+					root: 当前登录用户
+					localhost:当前主机的主机名，非完整格式
+					~： 用户当前所在的目录(current directory), 也称为工作目录(working directory): 相对路径
+					#：命令提示符：
+						#: 管理员账号：拥有最高权限，能执行所有操作
+						$: 非root用户，普通用户，只拥有系统使用权限，不能执行系统管理操作，最好只用非管理账号登录，执行管理操作临时切换成管理账户，操作完，切换回来非管理账户
+								添加用户: useradd centos
+								切换用户: su - centos
+								然后显示：[centos@localhost ~]$ 
+	总结几个命令：
+		tty 查看当前终端设备
+		ifconfig 或 ip addr list
+		echo $SHELL 查看当前shell类型  echo 回显
+		ping 网络探测的回显请求，探测目标主机与当前主机之间的连通性
+		ctrl+c 终止ping, 也可以在命令输到一半，不想执行了，可以使用ctrl+c 
+		systemctl poweroff 关机
+		poweroff 也可以关机
+		halt 关机
+		systemctl reboot 重启, 也可以直接用reboot
+		iptalbles -L -n 
+		systemctl disable firewalld.service 关掉当前的防火墙
+		systemctl stop firewalld.service 永久关闭防火墙
+	
+	Linux的哲学思想：
+		1. 一切皆文件，几乎将所有资源统统抽象成文件形式： 包括硬件设备，甚至通信借口等；那么访问文件就只需要一个接口：
+				open() read() write() close() delete() create()
+		2. 由众多功能单一的程序组成：一个程序通常只做好一件事；组合小程序完成复杂任务；
+		3. 程序启动后尽量避免跟用户交互，目标：易于以编程方式实现自动化任务
+		4. 使用文本文件保存配置信息
+	思考：文件是什么？众多文件如何有效组织？分类机制：根--二级位置--三级位置
+		目录：路径映射  /dev/pts/2
+		文件：存储空间存储的一段流式数据，对数据可以做到按名存取；
+		文件系统：层级结构：有索引
+			/: 根 原初起点 根目录
+				第二层结构
+				第三层结构
+			--> 倒置树状结构
+			文件路径表示：
+				绝对路径：从根开始表示出的路径
+				相对路径：从当前位置开始表示的路径
+			文件名使用法则：
+				严格区分字符大小写，windows不区分
+				目录也是文件，在同一路径下，两文件不能同名
+				支持使用除了/以外的任意字符
+				最长不能超过255个字符
+				每个用户在系统上都有个home目录，别人不能随便进来的
+				工作目录：
+					/etc/sysconfig/network-scripts/ifcfg-eno16777736
+					basename: ifcfg-eno16777736
+					dirname: /etc/sysconfig/network-scripts
+				命令：~]# basename /PATH/TO/SOMEFILE
+							SOMEFILE
+					  ~]# dirname /PATH/TO/SOMEFILE
+							/PATH/TO
+				
+	回顾：
+		开源协定：GPL LGPL BSD Apache
+		BSD:
+			1. 如果二次发布的产品中包含源代码，则在源代码中必须带有原来的代码中的BSD协定；
+			2. 如果二次发布产品是二进制格式的库或程序，则需要在发布的文档或版权声明中说明包含原来的代码中的BSD协议；
+			3. 不可以用开源代码的作者或组织，以及原来的产品的名字做市场推广；
+		开源：代码的共产主义运动
+		
+		文件系统，文件，目录
+			倒置树状结构
+				目录
+				文件
+			文件名：严格区分大小写，路径分隔符：/
+			文件名以.开头的表示隐藏文件
+		路径：
+			绝对，相对
+		程序的组成部分：
+			二进制程序文件、库文件--> 可执行文件，只能通过16进制查看器查看
+				二进制文件能被独立执行
+				库文件不能被独立执行，只能被调用时执行
+			配置文件、帮助文件--> 可被查看其内容的文件
+		《穿越计算机的迷雾》《量子物理史话》
+		
+		人机交互界面：
+			GUI
+			CLI
+		命令通用格式：
+			COMMAND OPTIONS ARGUMENTS  命令 选项 参数，
+				COMMAND:
+					命令的作用：发起一个命令（请求内核将某个二进制程序运行为一个进程），程序-->进程 静态-->动态（有生命周期）
+					命令本身是一个可执行的程序文件；二进制格式的文件，有可能会调用库文件；
+						多数程序文件都存放在四个目录：/bin, /sbin(管理员才能执行的)，/usr/bin, /usr/sbin
+						安装一些应用之后，有些程序文件可能会放在：/usr/local/bin, /usr/local/sbin
+						普通命令：/bin/, /usr/bin, /usr/local/bin
+						管理命令：/sbin/,/usr/sbin, /usr/local/sbin
+						共享库：/lib, /lib64, /usr/lib, /usr/lib64, /usr/local/lib, /usr/local/lib64
+							32bits的库：/lib, /usr/lib, /usr/local/lib
+							64bits的库：/lib64, /usr/lib64, /usr/local/lib64
+						注意：并非所有的命令都有一个在其目录与之对应的可执行程序文件
+					命令必须遵循特定格式规范：
+						Windows: exe msi
+						Linux: ELF, 使用file命令： file /bin/ls 可以查看bin目录下，ls这个文件的内容格式的类型
+					命令分为两类：
+						由shell程序的自带的命令：内置命令（builtin）
+						独立的可执行程序文件，文件名即命令名；外部命令
+					shell程序是独特的程序，负责解析用户提供的命令，shell通过环境变量来定义工作特性，跟DOS一样的原理，要加入环境变量就可以直接运行，例如ls
+						环境变量：
+							PATH: 从哪些路径中查找用户键入的命令字符换对应的命令文件
+							当前系统的环境变量：echo $PATH
+								[root@localhost ~]# echo $PATH
+								/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+								查找顺序：自左向右
+						shell自带的命令是没有外部程序文件的，是在环境变量指定的路径里面找不到的
+						查看命令类型(内部命令/外部命令)：type COMMAND 
+						[root@localhost ~]# type ls
+						ls is aliased to `ls --color=auto'   外部命令
+						[root@localhost ~]# type type
+						type is a shell builtin		shell内部命令
+						如果把环境变量全部删除，那么就没有外部命令可执行了，只能通过绝对路径才能执行；只有shell内部命令能执行；
+				OPTION:
+					作用：指定命令的运行特性，或者调整命令运行时所要执行的代码和实现的功能
+					选项有两种表现形式：
+						短选项：-c, 例如：-l， -d，
+								注意：有些命令的选项没有-
+								如果同一命令使用多个短选项，多数可以合并
+									例如：ls -l -d /var 
+										  ls -ld /var 效果一样
+						长选项：--word, 例如：--help, --human-readable
+								注意：长选项不能合并
+						注意：有些选项可以带参数，此称为选项参数，而不要称为命令参数
+				ARGUMENTS:
+					命令的作用对象：命令对什么生效
+					注意：不同命令的参数：有些命令可同时带多个参数，多个之间用空白字符分割
+					例如：ls -ld /var 这里的var是作用对象
+			获取命令的使用帮助：
+				内部命令：help COMMAND
+				外部命令：
+					(1).命令自带简要格式的使用帮助
+						# COMMAND --help
+					(2).使用手册：manual, 系统必须有这个手册，手册文件通常位于：/usr/share/man
+						# man COMMAND
+							SECTION:
+								NAME 功能性说明
+								SYNOPSIS 语法格式
+								DESCRIPTION 描述
+								OPTIONS 选项
+								EXAMPLES 示例
+								AUTHOR 作者
+								BUGS 报告bug的方式
+								SEE ALSO 参考
+									
+									SYNOPSIS: 看懂语法规则
+										[] 可选参考
+										<> 必选
+										a|b|c 多选一
+										... 同内容可出现多个
+							使用手册还分为章节
+								压缩格式的文件，有章节之分 /usr/share/man man1 man2 ... 
+								man1: 用户命令，普通用户和管理员都可以使用的命令
+								man2: 系统调用的，程序员才会用
+								man3: c库调用
+								man4: 设备文件及特殊文件
+								man5: 文件格式，文件配置格式的说明
+								man6: 游戏的使用帮助
+								man7: 杂项
+								man8: 管理工具及守护进程
+							有些命令不止在一个man的章节存在，例如：man passwd 系统默认会到第一章节去找，在页面的最上面会出现PASSWD(1)表示第一章节
+								如果想专门查看第五章节：命令这样写：man 5 passwd 即可，页面最上面会输出：PASSWD(5) 
+							注意：并非每个COMMAND在所有章节下都有手册
+							如何知道一个命令在哪些章节有手册：whatis COMMAND
+									[root@localhost ~]# whatis passwd
+									sslpasswd (1ssl)     - compute password hashes
+									passwd (1)           - update user's authentication tokens
+									passwd (5)           - password file
+								whatis的执行过程是查询数据库进行的，手动更新数据库：make whatis
+								man命令打开手册以后的操作方法：
+									翻屏：空格键向文件尾部翻屏
+									b: 向文件首部翻屏
+									ctrl+d: 向文件尾部翻办屏
+									ctrl+u: 向文件首部翻半屏
+									回车键：一次向文件尾部翻一行
+									k: 向文件首部翻一行
+									G：跳转至最后一行
+									#G：跳转至指定行，1G：跳转至首部
+								文本搜索功能：
+									/keyword  从文件首部向文件尾部依次查找
+									?keyword  从文件尾部向文件首部依次查找
+										n：找到结果后表示下一个
+										N：上一个
+									查找时不区分大小写
+								q：退出
+							选项：man -M /PATH/TO/SOMEWHERE 到指定目录下查找命令手册并打开
+							练习：useradd命令的用法
+								1. 添加用户gentoo
+									useradd gentoo
+								2. 添加用户slackware,要求指定其所用的shell为/bin/tcsh
+									useradd -s /bin/tcsh slackware
+									tail -1 /etc/passwd 查看shell类型
+							id命令：查看所有用户
+					(3) info COMMAND
+						获取命令的在线文档
+					(4) 很多应用程序会自带帮助文档： /usr/share/doc/APP-VERSION
+						README: 程序的相关信息
+						INSTALL:安装帮助
+						CHANGES:版本迭代详细信息
+					(5) 主流发行版官方文档
+						http://www.readhat.com/doc
+					(6) 程序的官方文档---官方会提供Documentation
+					(7) 搜索引擎
+						 keyword filetype:pdf
+						 keyword site:...
+					书籍的出版社：O'Reilly Wrox 机械工业 电子工业 人民邮电 清华大学 水利水电出版社
