@@ -160,3 +160,34 @@ Linux文件系统：
 	基础命令：
 		pwd cd ls echo date clock hwclocl cal cat tac file type tty shutdown reboot halt poweroff
 
+基本命令：
+	命令类型：
+		命令根据其是否在文件系统上存在一个与之对应的独立文件，可以分为内建命令和外部命令
+			外部命令：在系统文件里面都有一个独立文件，理论上说所有命令都是外部命令
+			内部命令：外部命令自带很多命令，例如外部命令bash自带了很多命令
+			区分内外部命令： type命令，如果提示是builtin就是内部命令
+										外部命令显示为命令文件路径
+									注意：命令可以有别名，别名可以与原名相同，此时原名被隐藏
+									例如：[root@localhost ~]# type ls
+										  ls is aliased to `ls --color=auto'
+									如果想运行命令本身：\ls，这时候输出的结果是不带颜色的
+							查看所有命令别名：alias, 可以自定义命令别名
+							自己定义别名：alias NAME='COMMAND', 只对当前shell登录进程有效,如果想永久有效，去改配置文件
+							撤销别名：unalias NAME
+
+	which - shows the full path of (shell) commands.显示命令完整路径
+		[root@localhost ~]# which which
+		alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'      # 默认显示别名
+			/usr/bin/alias
+			/usr/bin/which
+
+		[root@localhost ~]# which --skip-alias which      # 不显示别名
+		/usr/bin/which
+	whereis - locate the binary, source, and manual page files for a command
+		whereis [options] name
+			-b: 搜索二进制
+			-m: 搜索手册
+			-s: 搜索源文件
+	who - show who is logged on
+	w - Show who is logged on and what they are doing. 增强版的who命令
+		
