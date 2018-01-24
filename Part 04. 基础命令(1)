@@ -190,4 +190,158 @@ Linux文件系统：
 			-s: 搜索源文件
 	who - show who is logged on
 	w - Show who is logged on and what they are doing. 增强版的who命令
+
+bash的基础特性：
+	命令历史：shell进程会在其会话中保存此前用户提交执行的命令
+		~]# history 能提供从装机到现在所有执行过的历史命令，这些历史记录是保存在文件中的
+			history是shell的内嵌命令，是shell的特性
+			定制history的功能可以通过环境变量实现
+				HISTSIZE: 定义了history命令历史的保存条数，通过echo $HISTSIZE可以查看
+				HISTFILE: 持久保存命令历史的文件， 通过echo $HISTFILE获得， 
+				[root@localhost ~]# echo $HISTFILE
+				/root/.bash_history		进入到root目录后，通过 cat .bash_history可以查看到之前已经保存的历史，本次开机后的命令还保存在内存中，并未写入
+			查看history的用法： help history
+				history -d 100 删除history的第100条记录
+				history -d 100 5 从100条开始删5条
+				history -c 清空内存中的历史记录，可以通过-r读回来
+						-w	write the current history to the history file and append them to the history list 将当前历史写入文件保存
+						-r 	从/root/.bash_history中读到内存中
+				history 10 显示最近10条
+				!5: 再次执行历史列表中的第5条命令
+				!!: 再次执行上一次命令，直接用上方向键就行了
+				!STRING: 再一次执行命令历史列表中最近一个以STRING开头的命令
+			调用上一条命令的最后一个参数：ESC+.   ESC按一下后可以松开再按.
+				例如执行了 ls /root 之后，需要再次是从/root，cd ESC+.就可以达到cd /root的效果
+				也可以使用!$，例如：cd !$ 就相当于cd /root，这些快捷键应该会再写bashshell的时候有用
+		控制历史文件记录的方式：
+			环境变量：HISTCONTROL
+				ignoredups: 忽略重复命令
+				ignorespace: 忽略以空白字符开头的命令,设置： HISTCONTROL=ignorespace， 然后只要命令以空格开头，系统都不记录
+				ignoreboth: 以上两者同时生效
+			修改变量的值：
+				NAME='VALUE' 仅对当前shell进程有效
 		
+			命令：which whereis who w alias unalias
+			命令历史：history
+			文件类型：-,d,b,c,l,p,s
+
+		
+
+Linux基础知识
+bash基础特性：
+	命令补全：tab键
+		shell程序会在接收到用户执行命令的请求，分析完成之后，最左侧的字符串会被当做命令；
+		命令查找机制：
+			1. 查找内部命令；
+			2. 根据PATH环境变量中设定的目录，自左而右逐步搜索目录下的文件名；
+		给定的打头字符串，如果能唯一标识某命令程序文件，则直接补全；
+		如果不能唯一标识某命令程序文件，再按一次tab键一次，会给出列表；
+	路径补全：按tab键也可以，实际上原理不一样；路径补全是根据给定的起始路径补全
+	使用补全机制能避免出错
+目录管理类的命令：
+	mkdir, rmdir
+	 mkdir [OPTION]... DIRECTORY...
+		-p: 自动按需创建父目录
+		-v: 打印创建的内容
+		-m MODE: 创建目录时直接给定权限，否则是默认权限
+	 rmdir [OPTION]... DIRECTORY... 删除空目录，目录不空不能删除
+		-p: 删除某空目录后，其父目录是空，则删除，以此向上递归
+		-v: 显示过程
+	
+	问题1：如何创建/tem/x/y1, /tem/x/y2, /tem/x/y1/a, /tem/x/y1/b 
+	问题2：如何创建a_c, a_d, b_c, b_d
+	bash的基础特性之：命令行展开
+		~: 自动展开为用户的家目录，或指定的用户家目录
+		{}: 可承载一个以逗号分隔的路径列表，并将其展开为多个路径
+			例如：/tem/{a,b}相当于/tem/a, /tem/b
+		mkdir -pv /tem/x/{y1/{a,b},y2} 一个命令可以解决第一个问题,然后tree /tem可以查看， 如果没有tree，则使用yum install tree安装
+		mkdir -v {a,b}_{c,d}, 解决第二个问题
+	问题3：创建如下目录结构
+		/tem/mysysroot/
+			bin
+			sbin
+			etc
+				sysconfig
+					network-scripts
+			usr
+				bin
+				sbin
+				local
+					bin
+					sbin
+					etc
+					lib
+				lib
+				lib64
+			var
+				cache
+				log
+				run
+		mkdir -pv /tem/mysysroot/{bin,sbin,etc/sysconfig/network-scripts,usr/{bin,sbin,local/{bin,sbin,etc,lib},lib,lib64},var/{cache,log,run}}
+	 
+	tree命令，以树状结构显示文件层级结构，没有安装的话使用yum install tree
+		-L # 指定要显示的层级数
+	
+bash的基础特性：命令的执行状态结果
+	bash通过状态返回值来输出此结果
+		成功：0
+		失败：1-255
+	命令执行完成后，其状态返回值会保存于bash的特殊变量$?中,执行完命令接着使用echo $?即可获得命令执行的返回值
+		例如：ls /etc
+			   echo $?
+引用命令的执行结果：
+	$(COMMAND)或`COMMAND`    注意这里不是单引号
+	例如：mkdir $(date +%Y%m%d%H%M%S)
+bash的引用：
+	强引用：''	变量也不会替换
+	弱引用：""  变量会替换 
+	命令引用：$(COMMAND)或者`COMMAND`
+bash的快捷键：
+	ctrl+a 跳转至命令行首
+	ctrl+e 跳转至命令行尾
+	ctrl+u 删除命令行开头到光标之间的所有字符
+	ctrl+k 删除光标到末尾的所有字符
+	ctrl+l 清屏
+
+文本文件查看类命令：
+cat,tac,head,tail,more,less
+
+分屏查看：more less
+head:看一个文件的前#行，默认显示10行
+	head -n 20 /etc/rc.d/init.d/functions  查看前20行
+	或 head -20 /etc/rc.d/init.d/functions
+tail: 查看一个文件的后#行，默认10行
+	tail -n 20 /etc/rc.d/init.d/functions  查看最后20行
+	或 tail -20 /etc/rc.d/init.d/functions
+	tail -n 20 -f /etc/rc.d/init.d/functions
+		-f：如果被查看的文件是动态增加的，可以实时查看追加的内容，用于查看日志增加很有用；
+stat命令
+stat - display file or file system status
+stat FILE...
+
+文件：两类数据组成
+	元数据：metadata  一本书的目录，描述属性，使用stat看到的是文件的元数据
+	数据：data		  一本书的正文，使用cat等文本查看工具看到的就是数据
+Access: 2018-01-21 12:12:27.075999937 +0800   最近访问时间
+Modify: 2017-05-03 18:17:50.000000000 +0800	  数据改变时间，例如增加数据内容
+Change: 2017-11-03 06:07:59.815998266 +0800   元数据改变时间，例如改名
+touch命令：
+ touch - change file timestamps, Update the access and modification times of each FILE to the current time.
+-a     change only the access time
+-c,    do not create any files
+-m     change only the modification time
+-t STAMP use [[CC]YY]MMDDhhmm[.ss] instead of current time
+例如：
+[root@localhost tem]# touch -mt 200001022233.56 functions 
+[root@localhost tem]# stat functions 
+	Access: 2018-01-21 21:30:12.606008000 +0800   访问时间没有改变
+	Modify: 2000-01-02 22:33:56.000000000 +0800	  改变了Modify时间
+	Change: 2018-01-21 21:32:44.853006574 +0800   元数据时间就是执行改变Modify时间命令的时间
+注：Access和Modify时间的改变，元数据时间Change时间就会改变成执行Access和Modify时间命令的时间
+
+文件管理命令：cp mv rm
+cp命令：copy, 复制文件是复制的文件的数据，而不是复制的文件的metedata, 复制的过程：先在目标位置新建一个空文件，然后从源文件抽取数据流，填充到目标文件，这样就完成了复制；元数据不会被复制过来；
+cp [OPTION]... [-T] SOURCE DEST  单源文件复制
+cp [OPTION]... SOURCE... DIRECTORY  多源文件复制，SOURCE...表示多个源
+cp [OPTION]... -t DIRECTORY SOURCE... 多源文件复制的另外一种写法，（多）源文件写在后面
+
