@@ -1,1 +1,162 @@
-...
+Linux文件系统：
+	1. 文件名名称严格区分大小写
+	2. 文件可以使用除/以外的任意字符
+	3. 文件名长度不能超过255个字符
+	4. 以.开头的文件为隐藏文件
+		. : 当前目录
+		.. : 当前目录上一级目录
+工作目录： working directory
+家目录： home
+常用命令：
+	pwd: printing working directory, 显示当前工作目录
+	cd: change directory
+		cd [/PATH/TO/SOMEWHERE]
+		cd: 不带参数默认切换回home
+			注意：bash中~表示家目录
+			cd ~: 切换回自己的家目录
+			cd ~USERNAME: 切换到指定用户的家目录
+			cd -: 上一个目录和当前目录来回切换
+			cd ...: 回到上级目录
+			echo $PWD	输出当前工作目录
+			echo $OLDPWD  输出上一次的工作目录,两个bash的环境变量，是不断在改变的
+			cd $OLDPWD 相当于 cd -
+	ls: list 列出指定目录下的内容
+		ls [OPTION]... [FILE]...
+		ls -a: 列出全部内容，包括隐藏文件
+		ls -A: 显示除.和..之外的所有文件
+		ls -a /var/: 显示文件夹/var/的内容
+		ls -l: --long 长格式列表，即显示文件的详细属性信息
+			-rw-r--r--.  1 root root     1441 Nov  9 09:28 initial-setup-ks.cfg
+			-：文件类型 -,d,b,c,l,s,p, 都是表示文件类型
+			rw-r--r--：三组 
+				rw-：左三位表示文件属主的权限, 当前user权限
+				r--：中三位表示文件属组的权限, 当前用户所属的组的权限
+				r--：右三位表示其他用户（非属主、属组）的权限, 其他应用程序等的权限
+			1：数字表示文件被硬链接的次数
+			root: 文件的属性
+			root: 文件的属组
+			1441：数字表示文件的大小，单位是字节
+			Nov  9 09:28：文件最后一次被修改的时间
+			initial-setup-ks.cfg：文件名
+		ls -l -h， --human-readable: 对文件大小换算，非精确		
+		ls -lh 选项部分合并写	
+		ls -ld : 看文件夹自身的属性，不是这个文件夹里面的内容， ld要结合起来使用
+				[root@localhost ~]# ls -ld Music
+				drwxr-xr-x. 2 root root 6 Nov 29 06:44 Music
+		ls -r: 逆序显示 ls -lr 逆序显示详细信息
+		ls -R: recursive 递归显示
+	cat: concatenate files and print on the standard output
+			连接文件并将文件以标准形式显示出来，是文本文件显示工具，不要用于二进制文件
+		[root@localhost /]# file /etc/fstab    查看文件类型
+		/etc/fstab: ASCII text
+		cat /etc/fstab /etc/issue 同时显示多个文件，连接显示
+		cat -n /etc/fstab  输出的文件内容编号
+		cat -E /etc/fstab  在每行结尾显示$
+	tac: 也是文本文件查看工具，文件内容是逆序（行）显示
+	file: 查看文件内容的类型
+		大多数选项不怎么使用
+	echo:回显
+		echo [SHORT-OPTION]... [STRING]...
+			-n：不进行换行
+				例如：[root@localhost ~]# echo "hello"
+						hello
+						[root@localhost ~]# echo -n "hello"
+						hello[root@localhost ~]#    这里没有换行
+			-e: 让转义符生效
+			[root@localhost ~]# echo -e "hello \nworld"    换行符\n生效
+				hello 
+				world
+			[root@localhost ~]#
+			STRING可以使用引号，单引号和双引号均可用
+				单引号：强引用，变量不执行替换，不起作用
+				双引号：弱引用，变量会替换
+					[root@localhost ~]# echo "$SHELL"
+					/bin/bash
+					[root@localhost ~]# echo '$SHELL'
+					$SHELL
+				注意：变量引用的正规符号：${SHELL},但是{}可以省略
+	关机或重启命令：
+		shutdown
+			 shutdown [OPTIONS...] [TIME] [WALL...]
+				OPTIONS:
+					-h: halt
+					-r: restart
+					-c: cancel
+				TIME:
+					now  立刻关机
+					hh:mm  几点几分
+					+m  几分钟之后
+		wall: 发广播给登录系统的其他用户
+			wall "i'm gonna shutdown the machine"
+		shutdown -h +5  当管理员执行了5分钟后关机命令后，系统会自动wall给所有登录的用户，提醒将会5分钟后关机
+		shutdown -c 取消关机
+		[root@localhost ~]# shutdown -r +10 "hello, the system is going to restart after 10 minus, thanks a lot."
+			可以在shutdown命令后面加上wall的命令
+	日期相关命令：
+		date:
+			显示时间：date [OPTION]... [+FORMAT] 
+				[root@localhost ~]# date +%F   后面的+%F是格式化字符串
+				2018-01-17
+				[root@localhost ~]# date +"%F %T"  注意，这里要用双引号引起来，告诉解释器这里是一个字符串
+				2018-01-17 07:22:16
+				[root@localhost ~]# date +%s   显示时间戳 unix元年，unix诞生日 1970.01.01 00:00:00
+				1516191891
+			设置时间：date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]  
+				date 080808082015.12  把时间设置成: 2015年8月8日8时8分12秒
+		clock/hwclock, 两个命令是一个 hwclock 硬件时钟
+			[root@localhost ~]# which clock     查找clock命令在哪里
+			/usr/sbin/clock
+			[root@localhost ~]# which hwclock
+			/usr/sbin/hwclock
+			[root@localhost ~]# file /usr/sbin/clock		
+			/usr/sbin/clock: symbolic link to `hwclock'		clock是hwclock的一个软链接
+
+			hwclock - query or set the hardware clock (RTC)
+			Linux启动后有两套时钟，启动时会从硬件读取时间，启动完了就不再与硬件相关
+			date命令看到的是系统时钟
+				-s, --hctosys
+					Set the System Time from the Hardware Clock.
+				-w, --systohc
+					Set the Hardware Clock to the current System Time.
+		cal: - display a calendar
+			cal 2018显示2018年的日历
+			cal 10 2018 显示2018年10月的
+			cal 01 01 2018 显示2018年1月1日的
+	课外作业：
+		which - shows the full path of (shell) commands.
+		whereis - locate the binary, source, and manual page files for a command
+		who - show who is logged on
+			-a, --all
+				same as -b -d --login -p -r -t -T -u
+			-b, --boot
+				time of last system boot
+		w - Show who is logged on and what they are doing.
+			 w [options] user [...]
+			 
+	如何使用man
+		whatis keyword
+		man # keyword
+			SECTION:
+				NAME
+				SYNOPSIS:
+					[]可省略的内容
+					<>必须提供
+					|多选一
+					{}分组的，不是必须的
+					...可以出现多次的
+				man快捷键：按h看帮助
+					Space 后翻页
+					b 前翻页
+					Enter 后翻一行
+					k 前翻一页
+					Ctrl+d 后翻半页
+					Ctrl+u 前翻半页
+					q 退出
+					#G 跳至某行 1G跳至第一行 G跳至最后一行
+					/keyword 搜索
+					?keyword 搜索
+						n 下一个
+						N 上一个
+	基础命令：
+		pwd cd ls echo date clock hwclocl cal cat tac file type tty shutdown reboot halt poweroff
+
