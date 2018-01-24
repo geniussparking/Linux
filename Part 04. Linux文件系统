@@ -1,0 +1,106 @@
+Linux文件系统：
+	硬件--内核--系统调用--壳shell--库函数--应用程序（通过系统调用，库函数开发）
+	Linux程序的编译方式: 通用的系统库，Glibc库--GNU的标准C库，是Linux操作系统上必须提供的一个最基本的库，市面上的应用程序或多或少的调用了这个库中的函数/模块
+	动态链接式编译：库文件是事先存在系统中的（Linux而言是Glibc），程序运行时，操作系统中要有调用的库文件才能正确运行
+	静态编译：把所依赖/调用的库直接复制到程序中，一起打包，这样程序会更加通用（因为程序文件夹里面已经有了程序依赖的所有的库文件），但是程序会很大，对系统资源是个负担，
+		相当于要在内存中多开辟空间，动态链接式是共享库，内存中只需要载入一份
+	
+	进程的类型：
+		终端：硬件设备，关联一个用户接口，例如远程连接管理，只要用户使用交互式接口启动的都叫与终端相关
+		与终端相关：通过终端启动
+		与终端无关：操作系统引导启动过程中自动启动
+	操作系统的组成：
+		静态：kernel, application（库也是application）
+		文件系统：组织成层级结构，方便查找文件
+			应用程序组成：二进制 库 配置文件 帮助
+		任何时候使用操作系统都是在操作系统文件树里面切换working directory
+			Windows的磁盘分区概念不同,windows下可以随意访问某个磁盘下的任意文件
+			Linux下，所有文件必须从根开始，服从根的管理和分配，有层级结构划分；
+					新的分区，必须挂载mount在根的下面，被根管理；例如一个U盘要连接，系统必须把这个U盘挂载在（任意）一个空目录下，这个空目录就是挂载点，一般挂载在/Media下
+					FHS: Filesystem Hierarchy Standard 文件系统层级结构标准，所有Linux发行版必须遵循这个文件系统标准
+						必须了解每一个目录的意义：这样就能了解系统的组成，相关参考资料：http://www.pathname.com/fhs/pub/fhs-2.3.pdf
+						/bin: 所有用户可用的基本命令程序文件
+						/sbin: 供系统管理员使用的工具程序
+						/boot: 引导系统启动加载器必须用到的各静态文件：kernel, initramfs(initrd),grub等
+						/dev: 设备文件及特殊文件
+							设备有两种类型：字符设备、块设备
+								字符设备（线性设备）：数据交换以字符为单位进行，键盘显示器---按顺序访问
+								块设备（随机设备）：多个设备打包发送，硬盘---可以随机访问
+						/etc: Host-specific system configuration 系统程序的静态配置文件，只能为静态
+						/home: User home directories(optional) 可选的，可独立挂载一个分区的，no program should rely on this directory
+								普通的家目录的集中位置；一般每个普通用户的家目录默认为此目录下与用户名同名的目录 /home/USERNAME
+						/lib: Essential shared libraries and kernel modules
+							The /lib directory contains those shared library images needed to boot the system and run the commands in the root filesystem, ie. by binaries in /bin and /sbin.
+							为系统启动或根文件系统上的应用程序（/bin /sbin 提供共享库，以及为内核提供内核模块
+							libc.so.*: 动态链接C库
+							ld*: 运行时链接器/加载器
+							modules: 用于存储内核模块的目录
+						/lib64: 64位系统特有的存放64位共享库的路径
+						/Media: Mount point for removeable media, cdrom, floppy etc
+						/mnt: Mount point for a temporarily mounted filesystem
+							其他非关键性文件系统的临时挂载点
+						/opt: Add-on application software packages， 附加引用程序的安装位置，第三方应用程序
+						/root : Home directory for the root user (optional)
+						/srv : Data for services provided by this system 当前主机为服务提供的数据，有特殊性，一般是当前主机自己提供的
+						/tmp : Temporary files 为那些会产生临时文件的程序提供的用于存储临时文件的目录，供所有用户执行写入操作，有特殊权限
+						/usr: 自己就是一个层级结构，目录里面还有别的文件夹；
+							全称：全局共享只读数据路径 universal shared read-only file, 跟user没有关系
+							/usr is the second major section of the filesystem. /usr is shareable, read-only data. 
+							That means that /usr should be shareable between various FHS-compliant hosts and must not be written to. Any information that is host-specific or varies with time is stored elsewhere.
+							Large software packages must not use a direct subdirectory under the /usr hierarchy.
+								bin,sbin
+								lib, lib64
+								include: C程序头文件
+								share: 命令手册页和自带文档等架构特有的文件的存储位置
+								local: 另一个层级目录
+								X11R6：X-window程序的安装位置
+								src: 程序源码文件的存储位置
+						/usr/local: 用来存储第三方程序的，让系统管理员安装本地应用程序或第三方程序，比如安装一个程序的新版本，这时候老版本存在usr里面，老版本可能会被其他应用所依赖，所以新版本不会覆盖老版本，会安装在local下面
+							The /usr/local hierarchy is for use by the system administrator when installing software locally. It needs to
+							be safe from being overwritten when the system software is updated. It may be used for programs and data that
+							are shareable amongst a group of hosts, but not found in /usr.
+							Locally installed software must be placed within /usr/local rather than /usr unless it is being installed to
+							replace or upgrade software in /usr
+						/var: contains variable data files. This includes spool directories and files, administrative and logging data, and transient and temporary files.	
+							存储经常发生变化的数据，例如：logs
+								cache 	Application cache data
+								lib 	Variable state information
+								local 	Variable data for /usr/local
+								lock 	Lock files
+								log 	Log files and directories
+								opt 	Variable data for /opt
+								run 	Data relevant to running processes
+								spool 	Application spool data
+								tmp 	Temporary files preserved between system reboots
+						以上目录就是FHS所规定的必须存在的目录，可以读一下http://www.pathname.com/fhs/pub/fhs-2.3.pdf，以深入了解。
+						两个特殊目录：
+							/proc : Kernel and process information virtual filesystem
+									The proc filesystem is the de-facto standard Linux method for handling process and system information, rather
+									than /dev/kmem and other similar methods. We strongly encourage this for the storage and retrieval of process
+									information as well as other kernel and memory information.
+									为了保证一切皆文件而设定的，基于内存（临时的）的虚拟文件系统，为内核及进程运行存储相关信息的。它们多为内核参数，
+									例如：net.ipv4.ip_forward, 虚拟为net/ipv4/ip_forward, 存储在/proc/sys/下，所以完整路径：/proc/sys/net/ipv4/ip_forward, 参数值保存在ip_forward文件中
+							/sys: sysfs虚拟文件系统提供了一种比proc更为理想的访问内核数据的途径，主要作用在于为管理Linux设备提供了一种统一模型的接口	
+								参考文件：https://www.ibm.com/developerworks/cn/linux/l-cn-sysfs/
+																		
+	Linux系统上的文件类型：ls -l命令查看得到
+		-rw-------.  1 root root     1426 Nov  3 06:12 anaconda-ks.cfg
+		drwxr-xr-x.  2 root root        6 Nov 29 19:44 Desktop
+		
+		起始字符说明：
+		-: 常规文件，即f
+		d: directory, 目录文件，实现路径映射的，跟windows不同是文件夹
+		b: block device, 块设备，用来映射块设备的文件，支持以block为单位，进行随机访问
+		c: character device, 字符设备文件，支持以character为单位，进行线性访问，有秩序的
+			major number: 主设备号，用于标识设备类型的，进而确定要加载的驱动程序
+			minor number: 次设备号，用于标识同一类型中的不同设备
+			主设备号确定了驱动程序，次设备号确定了同一个设备下连接的不同设备，两个号码用逗号分隔，早期时候用8位二进制来表示的
+				例如: ls -l /dev
+				crw-rw----. 1 root video    10, 175 Jan 18 20:20 agpgart
+				crw-------. 1 root root     10, 235 Jan 18 20:20 autofs
+					10: major number
+					175: minor number
+		l: symbolic link, 符号链接文件，快捷方式，软连接，soft link
+		p: pipe，命名管道，有名字的管道，还有匿名管道
+		s: socket, 套接字文件 实现两个进程进行通信时进行套接的,主要用于服务提供的
+	
