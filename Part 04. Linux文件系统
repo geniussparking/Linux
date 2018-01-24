@@ -104,3 +104,20 @@ Linux文件系统：
 		p: pipe，命名管道，有名字的管道，还有匿名管道
 		s: socket, 套接字文件 实现两个进程进行通信时进行套接的,主要用于服务提供的
 	
+回顾：
+FHS、命令以及bash命令历史
+	FHS：非常基础和重要的
+		/bin, /sbin 存放二进制文件；/lib, /lib64存放库文件， /etc配置文件, 
+		/home /root 用户家目录
+		/boot 引导文件
+		/media /mnt 挂载
+		/proc /sys 伪文件/虚拟文件系统
+		/tmp 临时文件
+		/srv 为服务提供数据
+		/opt 独立的文件系统
+		/dev 放设备的
+		/usr 有很多目录，提供全局共享的只读文件路径，安装程序的，关键的服务类 工具类的 
+			bin sbin lib lib64 share include
+		/usr/local
+		/var 经常发生变化的
+			cache lib log 
