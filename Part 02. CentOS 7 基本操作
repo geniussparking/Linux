@@ -1,0 +1,125 @@
+CentOS 7 操作:
+	设置语言环境：localectl list-locales 查看有哪些语言可以设置
+				设置成中文的：localectl set-locale LANG=zh_CN.uft8
+				设置回英文：localectl set-locale LANG=en_US.utf8
+终端：terminal
+	用户界面：
+		GUI:
+			GNome
+			KDE
+		CLI:
+			bash zsh sh csh tcsh ksh
+远程连接：
+	查看ssh协议是否开启: ~]# ss -tnl, 查看系统是否监听于tcp协议的22号端口
+	~]# ifconfig 查看ip, 或者使用命令 ip addr list, 找到inet开头的，找到IP地址
+	确保防火墙处于关闭状态
+		1. iptables -L -n 
+		2. iptables -F 
+		CentOS 7:
+			systemctl diable firewalld.service  关掉当前的防火墙
+			systemctl stop firewalld.service	永久关闭防火墙
+		CentOS 6:
+			service iptables stop
+			chkconfig iptables off
+常用命令：
+	echo $SHELL 查看当前所用shell类型
+终端设备：terminal
+		多任务 多用户
+		物理终端，控制台：console
+		虚拟终端：默认6个，使用ctrl+alt+F(1-6)进行切换，相当于多用户登录,然后startx启动图形终端
+		图形终端：CentOS 6: ctrl+alt+F7  直接进入图形终端
+		串行终端：ttyS
+		伪终端：pty 用ssh远程连接的界面，图形界面的terminal
+Linux的哲学思想之一：一切皆文件
+		表现之一：硬件设备也通过文件表示
+			物理终端：/dev/console
+			虚拟终端：/dev/tty+数字[1,6]  /dev/tty#   #表示数字    
+			串行终端：/dev/ttyS#
+			伪终端：/dev/pts/# 
+		使用tty命令就可以查看当前终端号，在系统里面使用terminal的时候会输出：/dev/tty#   用ssh连接后会输出/dev/pts/#
+			
+注意：在启动设备之后，在其上关联一个用户接口程序，即可实现与用户交互
+		查看终端设备：tty
+		查看接口程序：echo $SHELL
+		启动GUI： 虚拟终端接口：startx &
+
+CLI: 命令行接口，prompt 
+		[root@localhost ~]# COMMAND 
+			prompt:
+				root: 当前登录用户
+				localhost:当前主机的主机名，非完整格式
+				~： 用户当前所在的目录(current directory), 也称为工作目录(working directory): 相对路径
+				#：命令提示符：
+					#: 管理员账号：拥有最高权限，能执行所有操作
+					$: 非root用户，普通用户，只拥有系统使用权限，不能执行系统管理操作，最好只用非管理账号登录，执行管理操作临时切换成管理账户，操作完，切换回来非管理账户
+							添加用户: useradd centos
+							切换用户: su - centos
+							然后显示：[centos@localhost ~]$ 
+总结几个命令：
+	tty 查看当前终端设备
+	ifconfig 或 ip addr list
+	echo $SHELL 查看当前shell类型  echo 回显
+	ping 网络探测的回显请求，探测目标主机与当前主机之间的连通性
+	ctrl+c 终止ping, 也可以在命令输到一半，不想执行了，可以使用ctrl+c 
+	systemctl poweroff 关机
+	poweroff 也可以关机
+	halt 关机
+	systemctl reboot 重启, 也可以直接用reboot
+	iptalbles -L -n 
+	systemctl disable firewalld.service 关掉当前的防火墙
+	systemctl stop firewalld.service 永久关闭防火墙
+
+Linux的哲学思想：
+	1. 一切皆文件，几乎将所有资源统统抽象成文件形式： 包括硬件设备，甚至通信借口等；那么访问文件就只需要一个接口：
+			open() read() write() close() delete() create()
+	2. 由众多功能单一的程序组成：一个程序通常只做好一件事；组合小程序完成复杂任务；
+	3. 程序启动后尽量避免跟用户交互，目标：易于以编程方式实现自动化任务
+	4. 使用文本文件保存配置信息
+思考：文件是什么？众多文件如何有效组织？分类机制：根--二级位置--三级位置
+	目录：路径映射  /dev/pts/2
+	文件：存储空间存储的一段流式数据，对数据可以做到按名存取；
+	文件系统：层级结构：有索引
+		/: 根 原初起点 根目录
+			第二层结构
+			第三层结构
+		--> 倒置树状结构
+		文件路径表示：
+			绝对路径：从根开始表示出的路径
+			相对路径：从当前位置开始表示的路径
+		文件名使用法则：
+			严格区分字符大小写，windows不区分
+			目录也是文件，在同一路径下，两文件不能同名
+			支持使用除了/以外的任意字符
+			最长不能超过255个字符
+			每个用户在系统上都有个home目录，别人不能随便进来的
+			工作目录：
+				/etc/sysconfig/network-scripts/ifcfg-eno16777736
+				basename: ifcfg-eno16777736
+				dirname: /etc/sysconfig/network-scripts
+			命令：~]# basename /PATH/TO/SOMEFILE
+						SOMEFILE
+				  ~]# dirname /PATH/TO/SOMEFILE
+						/PATH/TO
+			
+回顾：
+	开源协定：GPL LGPL BSD Apache
+	BSD:
+		1. 如果二次发布的产品中包含源代码，则在源代码中必须带有原来的代码中的BSD协定；
+		2. 如果二次发布产品是二进制格式的库或程序，则需要在发布的文档或版权声明中说明包含原来的代码中的BSD协议；
+		3. 不可以用开源代码的作者或组织，以及原来的产品的名字做市场推广；
+	开源：代码的共产主义运动
+	
+	文件系统，文件，目录
+		倒置树状结构
+			目录
+			文件
+		文件名：严格区分大小写，路径分隔符：/
+		文件名以.开头的表示隐藏文件
+	路径：
+		绝对，相对
+	程序的组成部分：
+		二进制程序文件、库文件--> 可执行文件，只能通过16进制查看器查看
+			二进制文件能被独立执行
+			库文件不能被独立执行，只能被调用时执行
+		配置文件、帮助文件--> 可被查看其内容的文件
+	《穿越计算机的迷雾》《量子物理史话》
