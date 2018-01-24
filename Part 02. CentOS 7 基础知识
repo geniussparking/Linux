@@ -1,0 +1,254 @@
+CentOS 7 操作:
+	设置语言环境：localectl list-locales 查看有哪些语言可以设置
+				设置成中文的：localectl set-locale LANG=zh_CN.uft8
+				设置回英文：localectl set-locale LANG=en_US.utf8
+终端：terminal
+	用户界面：
+		GUI:
+			GNome
+			KDE
+		CLI:
+			bash zsh sh csh tcsh ksh
+远程连接：
+	查看ssh协议是否开启: ~]# ss -tnl, 查看系统是否监听于tcp协议的22号端口
+	~]# ifconfig 查看ip, 或者使用命令 ip addr list, 找到inet开头的，找到IP地址
+	确保防火墙处于关闭状态
+		1. iptables -L -n 
+		2. iptables -F 
+		CentOS 7:
+			systemctl diable firewalld.service  关掉当前的防火墙
+			systemctl stop firewalld.service	永久关闭防火墙
+		CentOS 6:
+			service iptables stop
+			chkconfig iptables off
+常用命令：
+	echo $SHELL 查看当前所用shell类型
+终端设备：terminal
+		多任务 多用户
+		物理终端，控制台：console
+		虚拟终端：默认6个，使用ctrl+alt+F(1-6)进行切换，相当于多用户登录,然后startx启动图形终端
+		图形终端：CentOS 6: ctrl+alt+F7  直接进入图形终端
+		串行终端：ttyS
+		伪终端：pty 用ssh远程连接的界面，图形界面的terminal
+Linux的哲学思想之一：一切皆文件
+		表现之一：硬件设备也通过文件表示
+			物理终端：/dev/console
+			虚拟终端：/dev/tty+数字[1,6]  /dev/tty#   #表示数字    
+			串行终端：/dev/ttyS#
+			伪终端：/dev/pts/# 
+		使用tty命令就可以查看当前终端号，在系统里面使用terminal的时候会输出：/dev/tty#   用ssh连接后会输出/dev/pts/#
+			
+注意：在启动设备之后，在其上关联一个用户接口程序，即可实现与用户交互
+		查看终端设备：tty
+		查看接口程序：echo $SHELL
+		启动GUI： 虚拟终端接口：startx &
+
+CLI: 命令行接口，prompt 
+		[root@localhost ~]# COMMAND 
+			prompt:
+				root: 当前登录用户
+				localhost:当前主机的主机名，非完整格式
+				~： 用户当前所在的目录(current directory), 也称为工作目录(working directory): 相对路径
+				#：命令提示符：
+					#: 管理员账号：拥有最高权限，能执行所有操作
+					$: 非root用户，普通用户，只拥有系统使用权限，不能执行系统管理操作，最好只用非管理账号登录，执行管理操作临时切换成管理账户，操作完，切换回来非管理账户
+							添加用户: useradd centos
+							切换用户: su - centos
+							然后显示：[centos@localhost ~]$ 
+总结几个命令：
+	tty 查看当前终端设备
+	ifconfig 或 ip addr list
+	echo $SHELL 查看当前shell类型  echo 回显
+	ping 网络探测的回显请求，探测目标主机与当前主机之间的连通性
+	ctrl+c 终止ping, 也可以在命令输到一半，不想执行了，可以使用ctrl+c 
+	systemctl poweroff 关机
+	poweroff 也可以关机
+	halt 关机
+	systemctl reboot 重启, 也可以直接用reboot
+	iptalbles -L -n 
+	systemctl disable firewalld.service 关掉当前的防火墙
+	systemctl stop firewalld.service 永久关闭防火墙
+
+Linux的哲学思想：
+	1. 一切皆文件，几乎将所有资源统统抽象成文件形式： 包括硬件设备，甚至通信借口等；那么访问文件就只需要一个接口：
+			open() read() write() close() delete() create()
+	2. 由众多功能单一的程序组成：一个程序通常只做好一件事；组合小程序完成复杂任务；
+	3. 程序启动后尽量避免跟用户交互，目标：易于以编程方式实现自动化任务
+	4. 使用文本文件保存配置信息
+思考：文件是什么？众多文件如何有效组织？分类机制：根--二级位置--三级位置
+	目录：路径映射  /dev/pts/2
+	文件：存储空间存储的一段流式数据，对数据可以做到按名存取；
+	文件系统：层级结构：有索引
+		/: 根 原初起点 根目录
+			第二层结构
+			第三层结构
+		--> 倒置树状结构
+		文件路径表示：
+			绝对路径：从根开始表示出的路径
+			相对路径：从当前位置开始表示的路径
+		文件名使用法则：
+			严格区分字符大小写，windows不区分
+			目录也是文件，在同一路径下，两文件不能同名
+			支持使用除了/以外的任意字符
+			最长不能超过255个字符
+			每个用户在系统上都有个home目录，别人不能随便进来的
+			工作目录：
+				/etc/sysconfig/network-scripts/ifcfg-eno16777736
+				basename: ifcfg-eno16777736
+				dirname: /etc/sysconfig/network-scripts
+			命令：~]# basename /PATH/TO/SOMEFILE
+						SOMEFILE
+				  ~]# dirname /PATH/TO/SOMEFILE
+						/PATH/TO
+			
+回顾：
+	开源协定：GPL LGPL BSD Apache
+	BSD:
+		1. 如果二次发布的产品中包含源代码，则在源代码中必须带有原来的代码中的BSD协定；
+		2. 如果二次发布产品是二进制格式的库或程序，则需要在发布的文档或版权声明中说明包含原来的代码中的BSD协议；
+		3. 不可以用开源代码的作者或组织，以及原来的产品的名字做市场推广；
+	开源：代码的共产主义运动
+	
+	文件系统，文件，目录
+		倒置树状结构
+			目录
+			文件
+		文件名：严格区分大小写，路径分隔符：/
+		文件名以.开头的表示隐藏文件
+	路径：
+		绝对，相对
+	程序的组成部分：
+		二进制程序文件、库文件--> 可执行文件，只能通过16进制查看器查看
+			二进制文件能被独立执行
+			库文件不能被独立执行，只能被调用时执行
+		配置文件、帮助文件--> 可被查看其内容的文件
+	《穿越计算机的迷雾》《量子物理史话》
+人机交互界面：
+	GUI
+	CLI
+命令通用格式：
+	COMMAND OPTIONS ARGUMENTS  命令 选项 参数，
+		COMMAND:
+			命令的作用：发起一个命令（请求内核将某个二进制程序运行为一个进程），程序-->进程 静态-->动态（有生命周期）
+			命令本身是一个可执行的程序文件；二进制格式的文件，有可能会调用库文件；
+				多数程序文件都存放在四个目录：/bin, /sbin(管理员才能执行的)，/usr/bin, /usr/sbin
+				安装一些应用之后，有些程序文件可能会放在：/usr/local/bin, /usr/local/sbin
+				普通命令：/bin/, /usr/bin, /usr/local/bin
+				管理命令：/sbin/,/usr/sbin, /usr/local/sbin
+				共享库：/lib, /lib64, /usr/lib, /usr/lib64, /usr/local/lib, /usr/local/lib64
+					32bits的库：/lib, /usr/lib, /usr/local/lib
+					64bits的库：/lib64, /usr/lib64, /usr/local/lib64
+				注意：并非所有的命令都有一个在其目录与之对应的可执行程序文件
+			命令必须遵循特定格式规范：
+				Windows: exe msi
+				Linux: ELF, 使用file命令： file /bin/ls 可以查看bin目录下，ls这个文件的内容格式的类型
+			命令分为两类：
+				由shell程序的自带的命令：内置命令（builtin）
+				独立的可执行程序文件，文件名即命令名；外部命令
+			shell程序是独特的程序，负责解析用户提供的命令，shell通过环境变量来定义工作特性，跟DOS一样的原理，要加入环境变量就可以直接运行，例如ls
+				环境变量：
+					PATH: 从哪些路径中查找用户键入的命令字符换对应的命令文件
+					当前系统的环境变量：echo $PATH
+						[root@localhost ~]# echo $PATH
+						/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+						查找顺序：自左向右
+				shell自带的命令是没有外部程序文件的，是在环境变量指定的路径里面找不到的
+				查看命令类型(内部命令/外部命令)：type COMMAND 
+				[root@localhost ~]# type ls
+				ls is aliased to `ls --color=auto'   外部命令
+				[root@localhost ~]# type type
+				type is a shell builtin		shell内部命令
+				如果把环境变量全部删除，那么就没有外部命令可执行了，只能通过绝对路径才能执行；只有shell内部命令能执行；
+		OPTION:
+			作用：指定命令的运行特性，或者调整命令运行时所要执行的代码和实现的功能
+			选项有两种表现形式：
+				短选项：-c, 例如：-l， -d，
+						注意：有些命令的选项没有-
+						如果同一命令使用多个短选项，多数可以合并
+							例如：ls -l -d /var 
+								  ls -ld /var 效果一样
+				长选项：--word, 例如：--help, --human-readable
+						注意：长选项不能合并
+				注意：有些选项可以带参数，此称为选项参数，而不要称为命令参数
+		ARGUMENTS:
+			命令的作用对象：命令对什么生效
+			注意：不同命令的参数：有些命令可同时带多个参数，多个之间用空白字符分割
+			例如：ls -ld /var 这里的var是作用对象
+	获取命令的使用帮助：
+		内部命令：help COMMAND
+		外部命令：
+			(1).命令自带简要格式的使用帮助
+				# COMMAND --help
+			(2).使用手册：manual, 系统必须有这个手册，手册文件通常位于：/usr/share/man
+				# man COMMAND
+					SECTION:
+						NAME 功能性说明
+						SYNOPSIS 语法格式
+						DESCRIPTION 描述
+						OPTIONS 选项
+						EXAMPLES 示例
+						AUTHOR 作者
+						BUGS 报告bug的方式
+						SEE ALSO 参考
+							
+							SYNOPSIS: 看懂语法规则
+								[] 可选参考
+								<> 必选
+								a|b|c 多选一
+								... 同内容可出现多个
+					使用手册还分为章节
+						压缩格式的文件，有章节之分 /usr/share/man man1 man2 ... 
+						man1: 用户命令，普通用户和管理员都可以使用的命令
+						man2: 系统调用的，程序员才会用
+						man3: c库调用
+						man4: 设备文件及特殊文件
+						man5: 文件格式，文件配置格式的说明
+						man6: 游戏的使用帮助
+						man7: 杂项
+						man8: 管理工具及守护进程
+					有些命令不止在一个man的章节存在，例如：man passwd 系统默认会到第一章节去找，在页面的最上面会出现PASSWD(1)表示第一章节
+						如果想专门查看第五章节：命令这样写：man 5 passwd 即可，页面最上面会输出：PASSWD(5) 
+					注意：并非每个COMMAND在所有章节下都有手册
+					如何知道一个命令在哪些章节有手册：whatis COMMAND
+							[root@localhost ~]# whatis passwd
+							sslpasswd (1ssl)     - compute password hashes
+							passwd (1)           - update user's authentication tokens
+							passwd (5)           - password file
+						whatis的执行过程是查询数据库进行的，手动更新数据库：make whatis
+						man命令打开手册以后的操作方法：
+							翻屏：空格键向文件尾部翻屏
+							b: 向文件首部翻屏
+							ctrl+d: 向文件尾部翻办屏
+							ctrl+u: 向文件首部翻半屏
+							回车键：一次向文件尾部翻一行
+							k: 向文件首部翻一行
+							G：跳转至最后一行
+							#G：跳转至指定行，1G：跳转至首部
+						文本搜索功能：
+							/keyword  从文件首部向文件尾部依次查找
+							?keyword  从文件尾部向文件首部依次查找
+								n：找到结果后表示下一个
+								N：上一个
+							查找时不区分大小写
+						q：退出
+					选项：man -M /PATH/TO/SOMEWHERE 到指定目录下查找命令手册并打开
+					练习：useradd命令的用法
+						1. 添加用户gentoo
+							useradd gentoo
+						2. 添加用户slackware,要求指定其所用的shell为/bin/tcsh
+							useradd -s /bin/tcsh slackware
+							tail -1 /etc/passwd 查看shell类型
+					id命令：查看所有用户
+			(3) info COMMAND
+				获取命令的在线文档
+			(4) 很多应用程序会自带帮助文档： /usr/share/doc/APP-VERSION
+				README: 程序的相关信息
+				INSTALL:安装帮助
+				CHANGES:版本迭代详细信息
+			(5) 主流发行版官方文档
+				http://www.readhat.com/doc
+			(6) 程序的官方文档---官方会提供Documentation
+			(7) 搜索引擎
+				 keyword filetype:pdf
+				 keyword site:...
+			书籍的出版社：O'Reilly Wrox 机械工业 电子工业 人民邮电 清华大学 水利水电出版社
