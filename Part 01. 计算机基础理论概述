@@ -1,0 +1,295 @@
+VNC: Virtual Network Computing  协议 远程桌面分享工具，C/S，服务端和客户端；
+
+如何获取老师讲课的课件，文档，学习资料，课堂笔记，ftp://172.16.0.1  ftp server
+
+Linux运维课程体系大纲
+	就业班（基础）
+	架构师班（高级）
+
+	Linux入门（第一阶段）
+	Linux系统管理
+	Linux服务及安全管理
+		httpd, lamp, lnmp
+		Cache: memchached, varnish
+		DB: mysql (mariadb)
+	Linux Cluster:
+		LB Cluster: Nginx, LVS
+		HA Cluster: Keepalived
+	Linux Ops: ansible
+	Monitoring: zabbix
+	shell脚本编程
+	
+	http:（第二阶段）
+		tomcat, lnmt, lamt, session replication cluster
+		分布式存储系统
+			MogileFS, GlusterFS
+		LB Cluster: haproxy
+		HA Cluster: Corosync+Pacemaker, pcs/crmsh
+		MySQL: HA Cluster  MHA  备份恢复工具使用 MySQL Replcation Read-Write splitting
+		NoSQL: redis, mongodb, HBase
+		运维工具：puppet目前比较成熟完整的自动化工具 [saltstack不成熟], cobbler
+		虚拟化：
+			Linux操作系统原理，虚拟化技术原理；
+			kvm虚拟化应用详解
+			xen虚拟化已经快被淘汰
+			虚拟化网络：比较复杂，纯软件虚拟路由器，交换机... SDN：软件定义的网络
+			OpenStack:云栈
+		Docker: 容器
+		Docker云
+		ELK Stack: 日志分析工具 --> ElasticSearch: 搜索任何文件 Logstash 日志搜集工具，Kibana: 日志展示工具
+		大数据：Hadoop v2, 并行存储及分析平台
+			HBase, Hive
+			Storm, Spark
+		系统优化
+		Python编程
+			
+	RedHat: 红帽认证考试
+		RHCSA
+		RHCE
+		RHCA
+				
+	IT技术领域
+		研发：
+			硬件：接口
+				CPU(运算器和控制器）,内存，输入输出设备 
+					冯诺依曼体系
+				机器语言：二进制指令，二进制数据（最底层）
+				
+			软件：
+				汇编语言：用人类的自然语言在表述机器语言，低级语言,汇编器，写驱动程序
+				高级语言：编译器
+					系统级：C, C++ 开发操作系统，性能要求较高的项目：MySQL Oracle等等，成才很难
+					应用级：Java, Python， Ruby 离人近，离机器远,写应用程序
+				程序员写的程序代码，编程语言（低级和高级）
+		应用：
+			Linux运维,用别人写好的应用程序
+				shell脚本编程：让某些应用工作能自动完成
+				Python：专业编程语言--> ansible openstack
+			
+			DevOps:
+				Development
+				Operation
+			
+			
+	计算机与操作系统
+		ENIARC(最早）：
+			CPU: 运算器，控制器，寄存器（存储器），缓存（123级缓存），寄存和缓存是用老加速的；
+				CPU自己会有一些指令集，例如有加减乘除等功能；指令集：特权指令，普通指令
+				CPU内部的缓存越大，价格越高，缓存为王，缓存高一倍，价格可能高的离谱
+			存储器：内存，RAM（Random Access Memory，随机存储器）
+				一个Cell: 8bits位 -->1Bytes字节 最小存储单元，
+			Input：下指令，提供数据等
+			Output：输出数据加工后的结果
+		程序：指令+数据
+			  算法+数据结构（数据包大小，结构等）
+		
+		过程式编程语言：
+			顺序执行：执行一遍整个指令
+			循环执行：将整个循环执行N次
+			选择执行：仅执行其中一个分支
+		
+		多任务：multi tasks
+			起初不能多任务，后来加入监控程序，用来调配
+			内存通过空间去划分多个
+			CPU通过时间划分
+			Bell实验室，MIT麻省理工，GE通用电气--> 他们写了一个监控程序Multics
+			
+			Bell的Ken Thompson: Space Travel游戏--> 
+			DEC: PDP-11小型机，VAX（VMS）
+			1969年前后Ken在PDP-7上写程序：汇编语言---> Unics --> 改名成Unix，设计没有硬伤，很精良
+			Unix 1971年，Bell实验室要为自己进行文字处理，写了nroff，对Unix不断进行改进
+			1972年，Unix的装机量在Bell达到10台
+			最开始是B语言写的，是解释型语言，汇编语言，与底层结合太紧密；
+			B：Dennis Ritch 把B语言改成了C语言
+			1973年，Ken和Dennis一起用C语言重写整个Unix，C语言与cpu没有关系，只有汇编器（编译器）与CPU有关系，编译器将底层CPU的不同指令抹平了
+			使用C语言改写Unix后，是要编译器支持，使得Unix可以装在任何机器上；
+			1979年证实，把Unix改用C语言写是成功的；
+			当时的Bell实验室属于AT&T，当时AT&T在被反垄断诉讼，不能销售任何电话电报相关的产品，只能无偿提供；
+			当时很多大学机构免费获取了Unix，使得Unix可以被研究改进，然后反馈给了Bell实验室；
+			1979年，AT&T:System V7
+			1978年，SCO包装发行商用Unix
+			1980年：Microsoft, 售卖UNIX的变种XENIX
+			Berkeley: Ken,Berkeley去任教，使得Berkeley走在前沿
+				Bill Joy, BSRG, 1977, BSD(Berkeley System Distribution)
+			1980年，DARPA国防部高级研究署  TCP/IP，DARPA将TCP/IP的合同给了Berkeley
+			1983年，TCP/IP协议诞生在了Unix系统上
+			1981年，Microsoft，Bill Gates
+				当时西雅图的SCP的程序员研发了QDOS（Quick and Dirty Operating System），当时UNIX跑在摩托罗拉的CPU上
+				第一代的pc兼容机是由intel生产的CPU，性能太差，跑不了UNIX
+				Bill 5万美元直接买断了QDOS的授权，然后进行了修补，后来通过他母亲在IBM懂事会的身份拿到了IBM PC兼容机的订单
+				Bill只卖授权，每台PC兼容机给Bill授权费，Bill赚到上亿身价；
+			DOS 2.0, 光芒胜过CP/M，直到1990年，微软开发DOS都是用的Unix
+			SUN: Bill Joy，卖工作站workstation
+			APPLE诞生，卖PC机
+				XEROX: PARK（star图形操作系统）还发明了以太网和鼠标，将专利免费提供给社会
+				乔布斯买到了star，Bill从乔布斯也拿到了star，回去就在dos上研究开发图形界面系统，
+				Bill赶在乔布斯前面卖给了乔布斯的生意伙伴，并且发布了windows
+				Bill拉拢了VMS的一伙人开发改进windows--> windows NT（new technology）
+			System V Unix 和BSD打官司，UNIX在这10年因为打官司没落了，微软成长起来；
+			1985年：Richard Stallman，GNU运动，GNU is not Unix，is free; GPL: Genreal Public License；FSF：free software foundation
+				任何软件只要遵守GPL协定，那就是free的，自由的，可以获取源代码的；
+				X-Window加入GPL，为unix做图形界面
+				gcc: gnu c complier
+				vi: visual interface
+				... ...
+				
+			
+			
+			商业版UNIX：自己加功能，不公布阻碍发展
+				SUN: Solaris
+				IBM: AIX
+				HP: HP-UX
+				
+			Andrew: Minix, 4000行的unix
+			
+			1990： BSD 将System V的代码慢慢移除？
+					Jolitz,尝试将BSD移植到x86上，后来因为反对商业化，将研究成果全部删除；
+					1992年386-BSD继续
+			1991年8月：Linus Torvalds宣布成立Linux    GPL
+			
+			Larry Wall, patch工具，可以部分修改代码
+			上面说的所有的系统（BSD,Linux,Minix,System v），其实都是Kernel,不包括应用程序，kernel包含控制器和驱动等等
+			完整的OS: Kernel+Application
+			狭义OS: Kernel
+			
+			Linus提供Kernel, GNU提供application --> GNU/Linux
+			Mac BSD系统
+			Andriod Linux
+			
+			os接口有两类：接口也是应用程序
+				GUI：Graphic User Interface
+						GNome:C语言开发，研发环境gtk
+						KDE: c++, qt
+				CLI: Command Line Interface
+					bash
+					zsh
+					csh
+					tcsh
+					ksh
+			操作系统的功能：
+				驱动程序
+				进程管理
+				安全
+				网络功能
+				内存管理
+				文件系统
+				........
+				
+			API: Application Program Interface  程序员面对的编程接口
+			ABI: Application Binary Interface 	程序应用者面对的运行程序接口
+			
+			硬件--操作系统，驱动--库  编程的时候可以进行系统调用system call，也可以调用库Library, 
+			如果不同的操作系统提供的Library调用接口一样，那开发出来的应用程序就可以通用
+			POSIX: Portable Operation System 可移植操作系统
+			
+			GNU:
+				提供源码：需要编译成二进制格式才能在操作系统上运行
+				Linux是所有志愿者把不同部分的源码编译成二进制文件后才能使用的
+				发行版：数百种，不同组织对源码进行编译的时候的理解是不同的，所以有不同的特性和版本
+				主流发行版本：
+				Debian：Ubuntu是基于debian的二次发行版本
+							mint 桌面做的很好
+						Knopix 以安全著称
+				Slackware--S.U.S.E
+							SLES：suse linux enterprise system
+							openSUSE
+				RedHat：
+					--Centos基于红帽企业版的二次发行,CentOS和RHEL是完全兼容的，CentOS是由红帽提供的源码，社区编译再发行出来的系统
+					RedHat 9.0
+							--RedHat Enterprise Linux: RHEL
+								--CentOS: Community Enterprise OS
+				
+				RedHat CentOS 各个Linux的发行版本和Linux的关系：Linux是由GNU组织提供应用，使用Linux内核的操作系统，但是GNU组织只提供源码，
+				源码还需要编译成系统才能使用，所有的发行版本都是不同的组织编译出来的；
+				
+		软件程序：版本号
+				major, minor, release
+				Linux: 0.99, 2.2, 2.4, 2.6, 3.0, 4.0 Linux内核官网：www.kernel.org 
+		发行版本也有自己的版本号：
+			REHL:5.x 6.x 7.x 	
+				Fedora 23
+			Debian: 8.x 
+			OpenSuSE: 13.x 
+		作业：开源协定相关
+			GPL, BSD, Apache
+			Android
+		
+回顾：
+	Debian, Slackware, RedHat
+		Debian:
+			Ubuntu
+			Knopix 
+		Slackware:
+			S.u.S.E 
+				OenSUSE
+		RedHat:
+			Fedora
+			CentOS
+	
+	Linux: 
+		Linux仅仅是内核 + GNU组织各种Application = 完整操作系统
+		GNU/Linux: 通常以源码（文本格式）方式提供
+					自由、灵活
+		编码：文本格式的源码使用编译器将源码编译成对应的机器能运行的程序	
+		GNU组织下的开源协定：GPL 流毒无穷
+		BSD也是开源协定，比较宽松
+	Linux基础：CPU架构
+		x86 兼容CPU
+		x64(通常叫AMD64，64架构是最先由AMD研发的)
+		m68000 -- m68k 摩托罗拉cpu
+		arm架构 常用手持移动设备的cpu
+		sparc 斯坦福大学研发
+		power IBM的很强悍的CPU，全球第一款双核 四核 64核，第一款主频超过4GHZ的CPU
+		powerpc简装版power cpu, 由苹果，IBM，摩托罗拉合起来研发，早期苹果工作站都是power cpu
+		MIPS 
+		HP的Alpha 跑hp-ux 
+	指令集：复杂指令集 精简指令集
+	
+	硬件：机器语言，对程序员来说太难了
+	所以，厂商生产完硬件，提供微码编程接口--汇编语言，汇编程序员调用汇编语言接口来写程序，写好的程序需要一个汇编器转换成机器语言才能在硬件上执行
+	使用汇编语言写的任何操作系统都是直接在硬件上运行的，所以那时候写的操作系统很难移植
+	后来出现了POSIX规范，统一标准，可移植操作系统
+	后来出现高级语言（c,c++）写操作系统，和cpu没有密切关系了，这种高级语言需要先编译成对应的cpu能执行的机器语言
+	编译的过程：可以针对正在运行的CPU架构编译，也可以交叉编译（cross compile），可以运行在别的CPU架构上, 实现了代码的移植
+	注：编译完成的机器语言就不能再移植
+	
+	Stallman: GNU运动
+	开源协定：GNU的GPL，General Public License, 流毒无穷，只要沾边GPL的代码，所有代码成GPL的版权，后来阻碍GPL运动开展；
+				后来产生LGPL：Lesser GPL, 更宽松的GPL-- 调用了GPL的库，不用开源，但是还是不够自由，现在GPL V2 V3
+			下面两个是比较宽松的协定：可以拿来修改后包装成商业版本，只要不说是BSD或Apache协定的代码就行
+			相当于说代码可以随意借用和修改，很自由，全凭自由，更加符合自由软件精神
+				BSD开源协定：
+				Apache开源协定：ASF -- Apache Software Foundation,非常流行, 风头正盛
+				Apache和BSD极大的促进了开源运动
+			
+	双线授权：
+		遵循开源协定的源码，社区版本，任何人都可以拿去使用
+		商业授权版本，卖增值服务和额外功能---企业版
+	
+	程序管理：
+		程序的组成部分：	
+			二进制程序：一个程序能运行的内容
+			配置文件：通常是文本文件，XML文件
+			库文件
+			帮助文件
+		程序包管理器：
+			程序的组成文件打包成一个或有限几个文件
+			完成安装操作
+			完成卸载操作
+			查询功能
+		Debian：dpkg/deb, apt-get(前端管理器)
+		RedHat: rpm, yum, yum的升级版 --> dnf
+		S.u.S.E: rpm, zypper
+		ArchLinux: port 
+		Gentoo: 需要边安装边编译的，最适合机器的环境，性能上好很多
+		LFS: Linux From Scratch Linux从零开始构建， 需要自己下载源码，自己编译的Linux，最纯净的Linux, 能了解整个Linux的各个部分，完完全全的了解Linux
+		Kali: 内置各种渗透工具的Linux
+	安装Linux:
+		虚拟机方式：使用软件虚拟化各个硬件
+			计算机：CPU 内存 IO 
+				CPU 网卡：时序复用 
+				内存 硬盘：空间复用 
+				IO鼠标键盘显示器：捕获焦点 
+		虚拟化软件程序：
+			vmware workstation
+			virtualbox
