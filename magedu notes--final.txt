@@ -1,0 +1,1427 @@
+Day 1
+
+VNC: Virtual Network Computing  协议 远程桌面分享工具，C/S，服务端和客户端；
+
+如何获取老师讲课的课件，文档，学习资料，课堂笔记，ftp://172.16.0.1  ftp server
+
+
+Linux运维课程体系大纲
+	就业班（基础）
+	架构师班（高级）
+
+	Linux入门（第一阶段）
+	Linux系统管理
+	Linux服务及安全管理
+		httpd, lamp, lnmp
+		Cache: memchached, varnish
+		DB: mysql (mariadb)
+	Linux Cluster:
+		LB Cluster: Nginx, LVS
+		HA Cluster: Keepalived
+	Linux Ops: ansible
+	Monitoring: zabbix
+	shell脚本编程
+	
+	http:（第二阶段）
+		tomcat, lnmt, lamt, session replication cluster
+		分布式存储系统
+			MogileFS, GlusterFS
+		LB Cluster: haproxy
+		HA Cluster: Corosync+Pacemaker, pcs/crmsh
+		MySQL: HA Cluster  MHA  备份恢复工具使用 MySQL Replcation Read-Write splitting
+		NoSQL: redis, mongodb, HBase
+		运维工具：puppet目前比较成熟完整的自动化工具 [saltstack不成熟], cobbler
+		虚拟化：
+			Linux操作系统原理，虚拟化技术原理；
+			kvm虚拟化应用详解
+			xen虚拟化已经快被淘汰
+			虚拟化网络：比较复杂，纯软件虚拟路由器，交换机... SDN：软件定义的网络
+			OpenStack:云栈
+		Docker: 容器
+		Docker云
+		ELK Stack: 日志分析工具 --> ElasticSearch: 搜索任何文件 Logstash 日志搜集工具，Kibana: 日志展示工具
+		大数据：Hadoop v2, 并行存储及分析平台
+			HBase, Hive
+			Storm, Spark
+		系统优化
+		Python编程
+			
+	RedHat: 红帽认证考试
+		RHCSA
+		RHCE
+		RHCA
+				
+	IT技术领域
+		研发：
+			硬件：接口
+				CPU(运算器和控制器）,内存，输入输出设备 
+					冯诺依曼体系
+				机器语言：二进制指令，二进制数据（最底层）
+				
+			软件：
+				汇编语言：用人类的自然语言在表述机器语言，低级语言,汇编器，写驱动程序
+				高级语言：编译器
+					系统级：C, C++ 开发操作系统，性能要求较高的项目：MySQL Oracle等等，成才很难
+					应用级：Java, Python， Ruby 离人近，离机器远,写应用程序
+				程序员写的程序代码，编程语言（低级和高级）
+		应用：
+			Linux运维,用别人写好的应用程序
+				shell脚本编程：让某些应用工作能自动完成
+				Python：专业编程语言--> ansible openstack
+			
+			DevOps:
+				Development
+				Operation
+			
+			
+	计算机与操作系统
+		ENIARC(最早）：
+			CPU: 运算器，控制器，寄存器（存储器），缓存（123级缓存），寄存和缓存是用老加速的；
+				CPU自己会有一些指令集，例如有加减乘除等功能；指令集：特权指令，普通指令
+				CPU内部的缓存越大，价格越高，缓存为王，缓存高一倍，价格可能高的离谱
+			存储器：内存，RAM（Random Access Memory，随机存储器）
+				一个Cell: 8bits位 -->1Bytes字节 最小存储单元，
+			Input：下指令，提供数据等
+			Output：输出数据加工后的结果
+		程序：指令+数据
+			  算法+数据结构（数据包大小，结构等）
+		
+		过程式编程语言：
+			顺序执行：执行一遍整个指令
+			循环执行：将整个循环执行N次
+			选择执行：仅执行其中一个分支
+		
+		多任务：multi tasks
+			起初不能多任务，后来加入监控程序，用来调配
+			内存通过空间去划分多个
+			CPU通过时间划分
+			Bell实验室，MIT麻省理工，GE通用电气--> 他们写了一个监控程序Multics
+			
+			Bell的Ken Thompson: Space Travel游戏--> 
+			DEC: PDP-11小型机，VAX（VMS）
+			1969年前后Ken在PDP-7上写程序：汇编语言---> Unics --> 改名成Unix，设计没有硬伤，很精良
+			Unix 1971年，Bell实验室要为自己进行文字处理，写了nroff，对Unix不断进行改进
+			1972年，Unix的装机量在Bell达到10台
+			最开始是B语言写的，是解释型语言，汇编语言，与底层结合太紧密；
+			B：Dennis Ritch 把B语言改成了C语言
+			1973年，Ken和Dennis一起用C语言重写整个Unix，C语言与cpu没有关系，只有汇编器（编译器）与CPU有关系，编译器将底层CPU的不同指令抹平了
+			使用C语言改写Unix后，是要编译器支持，使得Unix可以装在任何机器上；
+			1979年证实，把Unix改用C语言写是成功的；
+			当时的Bell实验室属于AT&T，当时AT&T在被反垄断诉讼，不能销售任何电话电报相关的产品，只能无偿提供；
+			当时很多大学机构免费获取了Unix，使得Unix可以被研究改进，然后反馈给了Bell实验室；
+			1979年，AT&T:System V7
+			1978年，SCO包装发行商用Unix
+			1980年：Microsoft, 售卖UNIX的变种XENIX
+			Berkeley: Ken,Berkeley去任教，使得Berkeley走在前沿
+				Bill Joy, BSRG, 1977, BSD(Berkeley System Distribution)
+			1980年，DARPA国防部高级研究署  TCP/IP，DARPA将TCP/IP的合同给了Berkeley
+			1983年，TCP/IP协议诞生在了Unix系统上
+			1981年，Microsoft，Bill Gates
+				当时西雅图的SCP的程序员研发了QDOS（Quick and Dirty Operating System），当时UNIX跑在摩托罗拉的CPU上
+				第一代的pc兼容机是由intel生产的CPU，性能太差，跑不了UNIX
+				Bill 5万美元直接买断了QDOS的授权，然后进行了修补，后来通过他母亲在IBM懂事会的身份拿到了IBM PC兼容机的订单
+				Bill只卖授权，每台PC兼容机给Bill授权费，Bill赚到上亿身价；
+			DOS 2.0, 光芒胜过CP/M，直到1990年，微软开发DOS都是用的Unix
+			SUN: Bill Joy，卖工作站workstation
+			APPLE诞生，卖PC机
+				XEROX: PARK（star图形操作系统）还发明了以太网和鼠标，将专利免费提供给社会
+				乔布斯买到了star，Bill从乔布斯也拿到了star，回去就在dos上研究开发图形界面系统，
+				Bill赶在乔布斯前面卖给了乔布斯的生意伙伴，并且发布了windows
+				Bill拉拢了VMS的一伙人开发改进windows--> windows NT（new technology）
+			System V Unix 和BSD打官司，UNIX在这10年因为打官司没落了，微软成长起来；
+			1985年：Richard Stallman，GNU运动，GNU is not Unix，is free; GPL: Genreal Public License；FSF：free software foundation
+				任何软件只要遵守GPL协定，那就是free的，自由的，可以获取源代码的；
+				X-Window加入GPL，为unix做图形界面
+				gcc: gnu c complier
+				vi: visual interface
+				... ...
+				
+			
+			
+			商业版UNIX：自己加功能，不公布阻碍发展
+				SUN: Solaris
+				IBM: AIX
+				HP: HP-UX
+				
+			Andrew: Minix, 4000行的unix
+			
+			1990： BSD 将System V的代码慢慢移除？
+					Jolitz,尝试将BSD移植到x86上，后来因为反对商业化，将研究成果全部删除；
+					1992年386-BSD继续
+			1991年8月：Linus Torvalds宣布成立Linux    GPL
+			
+			Larry Wall, patch工具，可以部分修改代码
+			上面说的所有的系统（BSD,Linux,Minix,System v），其实都是Kernel,不包括应用程序，kernel包含控制器和驱动等等
+			完整的OS: Kernel+Application
+			狭义OS: Kernel
+			
+			Linus提供Kernel, GNU提供application --> GNU/Linux
+			Mac BSD系统
+			Andriod Linux
+			
+			os接口有两类：接口也是应用程序
+				GUI：Graphic User Interface
+						GNome:C语言开发，研发环境gtk
+						KDE: c++, qt
+				CLI: Command Line Interface
+					bash
+					zsh
+					csh
+					tcsh
+					ksh
+			操作系统的功能：
+				驱动程序
+				进程管理
+				安全
+				网络功能
+				内存管理
+				文件系统
+				........
+				
+			API: Application Program Interface  程序员面对的编程接口
+			ABI: Application Binary Interface 	程序应用者面对的运行程序接口
+			
+			硬件--操作系统，驱动--库  编程的时候可以进行系统调用system call，也可以调用库Library, 
+			如果不同的操作系统提供的Library调用接口一样，那开发出来的应用程序就可以通用
+			POSIX: Portable Operation System 可移植操作系统
+			
+			GNU:
+				提供源码：需要编译成二进制格式才能在操作系统上运行
+				Linux是所有志愿者把不同部分的源码编译成二进制文件后才能使用的
+				发行版：数百种，不同组织对源码进行编译的时候的理解是不同的，所以有不同的特性和版本
+				主流发行版本：
+				Debian：Ubuntu是基于debian的二次发行版本
+							mint 桌面做的很好
+						Knopix 以安全著称
+				Slackware--S.U.S.E
+							SLES：suse linux enterprise system
+							openSUSE
+				RedHat：
+					--Centos基于红帽企业版的二次发行,CentOS和RHEL是完全兼容的，CentOS是由红帽提供的源码，社区编译再发行出来的系统
+					RedHat 9.0
+							--RedHat Enterprise Linux: RHEL
+								--CentOS: Community Enterprise OS
+				
+				RedHat CentOS 各个Linux的发行版本和Linux的关系：Linux是由GNU组织提供应用，使用Linux内核的操作系统，但是GNU组织只提供源码，
+				源码还需要编译成系统才能使用，所有的发行版本都是不同的组织编译出来的；
+				
+		软件程序：版本号
+				major, minor, release
+				Linux: 0.99, 2.2, 2.4, 2.6, 3.0, 4.0 Linux内核官网：www.kernel.org 
+		发行版本也有自己的版本号：
+			REHL:5.x 6.x 7.x 	
+				Fedora 23
+			Debian: 8.x 
+			OpenSuSE: 13.x 
+		作业：开源协定相关
+			GPL, BSD, Apache
+			Android
+		
+回顾：
+	Debian, Slackware, RedHat
+		Debian:
+			Ubuntu
+			Knopix 
+		Slackware:
+			S.u.S.E 
+				OenSUSE
+		RedHat:
+			Fedora
+			CentOS
+	
+	Linux: 
+		Linux仅仅是内核 + GNU组织各种Application = 完整操作系统
+		GNU/Linux: 通常以源码（文本格式）方式提供
+					自由、灵活
+		编码：文本格式的源码使用编译器将源码编译成对应的机器能运行的程序	
+		GNU组织下的开源协定：GPL 流毒无穷
+		BSD也是开源协定，比较宽松
+	Linux基础：CPU架构
+		x86 兼容CPU
+		x64(通常叫AMD64，64架构是最先由AMD研发的)
+		m68000 -- m68k 摩托罗拉cpu
+		arm架构 常用手持移动设备的cpu
+		sparc 斯坦福大学研发
+		power IBM的很强悍的CPU，全球第一款双核 四核 64核，第一款主频超过4GHZ的CPU
+		powerpc简装版power cpu, 由苹果，IBM，摩托罗拉合起来研发，早期苹果工作站都是power cpu
+		MIPS 
+		HP的Alpha 跑hp-ux 
+	指令集：复杂指令集 精简指令集
+	
+	硬件：机器语言，对程序员来说太难了
+	所以，厂商生产完硬件，提供微码编程接口--汇编语言，汇编程序员调用汇编语言接口来写程序，写好的程序需要一个汇编器转换成机器语言才能在硬件上执行
+	使用汇编语言写的任何操作系统都是直接在硬件上运行的，所以那时候写的操作系统很难移植
+	后来出现了POSIX规范，统一标准，可移植操作系统
+	后来出现高级语言（c,c++）写操作系统，和cpu没有密切关系了，这种高级语言需要先编译成对应的cpu能执行的机器语言
+	编译的过程：可以针对正在运行的CPU架构编译，也可以交叉编译（cross compile），可以运行在别的CPU架构上, 实现了代码的移植
+	注：编译完成的机器语言就不能再移植
+	
+	Stallman: GNU运动
+	开源协定：GNU的GPL，General Public License, 流毒无穷，只要沾边GPL的代码，所有代码成GPL的版权，后来阻碍GPL运动开展；
+				后来产生LGPL：Lesser GPL, 更宽松的GPL-- 调用了GPL的库，不用开源，但是还是不够自由，现在GPL V2 V3
+			下面两个是比较宽松的协定：可以拿来修改后包装成商业版本，只要不说是BSD或Apache协定的代码就行
+			相当于说代码可以随意借用和修改，很自由，全凭自由，更加符合自由软件精神
+			BSD开源协定：
+			Apache开源协定：ASF -- Apache Software Foundation,非常流行, 风头正盛
+			Apache和BSD极大的促进了开源运动
+			
+	双线授权：
+		遵循开源协定的源码，社区版本，任何人都可以拿去使用
+		商业授权版本，卖增值服务和额外功能---企业版
+	
+	程序管理：
+		程序的组成部分：	
+			二进制程序：一个程序能运行的内容
+			配置文件：通常是文本文件，XML文件
+			库文件
+			帮助文件
+		程序包管理器：
+			程序的组成文件打包成一个或有限几个文件
+			完成安装操作
+			完成卸载操作
+			查询功能
+		Debian：dpkg/deb, apt-get(前端管理器)
+		RedHat: rpm, yum, yum的升级版 --> dnf
+		S.u.S.E: rpm, zypper
+		ArchLinux: port 
+		Gentoo: 需要边安装边编译的，最适合机器的环境，性能上好很多
+		LFS: Linux From Scratch Linux从零开始构建， 需要自己下载源码，自己编译的Linux，最纯净的Linux, 能了解整个Linux的各个部分，完完全全的了解Linux
+		Kali: 内置各种渗透工具的Linux
+	安装Linux:
+		虚拟机方式：使用软件虚拟化各个硬件
+			计算机：CPU 内存 IO 
+				CPU 网卡：时序复用 
+				内存 硬盘：空间复用 
+				IO鼠标键盘显示器：捕获焦点 
+		虚拟化软件程序：
+			vmware workstation
+			virtualbox
+	
+	CentOS 7 操作:
+		设置语言环境：localectl list-locales 查看有哪些语言可以设置
+					设置成中文的：localectl set-locale LANG=zh_CN.uft8
+					设置回英文：localectl set-locale LANG=en_US.utf8
+	终端：terminal
+		用户界面：
+			GUI:
+				GNome
+				KDE
+			CLI:
+				bash zsh sh csh tcsh ksh
+	远程连接：
+		查看ssh协议是否开启: ~]# ss -tnl, 查看系统是否监听于tcp协议的22号端口
+		~]# ifconfig 查看ip, 或者使用命令 ip addr list, 找到inet开头的，找到IP地址
+		确保防火墙处于关闭状态
+			1. iptables -L -n 
+			2. iptables -F 
+			CentOS 7:
+				systemctl diable firewalld.service  关掉当前的防火墙
+				systemctl stop firewalld.service	永久关闭防火墙
+			CentOS 6:
+				service iptables stop
+				chkconfig iptables off
+	常用命令：
+		echo $SHELL 查看当前所用shell类型
+	终端设备：terminal
+			多任务 多用户
+			物理终端，控制台：console
+			虚拟终端：默认6个，使用ctrl+alt+F(1-6)进行切换，相当于多用户登录,然后startx启动图形终端
+			图形终端：CentOS 6: ctrl+alt+F7  直接进入图形终端
+			串行终端：ttyS
+			伪终端：pty 用ssh远程连接的界面，图形界面的terminal
+	Linux的哲学思想之一：一切皆文件
+			表现之一：硬件设备也通过文件表示
+				物理终端：/dev/console
+				虚拟终端：/dev/tty+数字[1,6]  /dev/tty#   #表示数字    
+				串行终端：/dev/ttyS#
+				伪终端：/dev/pts/# 
+			使用tty命令就可以查看当前终端号，在系统里面使用terminal的时候会输出：/dev/tty#   用ssh连接后会输出/dev/pts/#
+				
+	注意：在启动设备之后，在其上关联一个用户接口程序，即可实现与用户交互
+			查看终端设备：tty
+			查看接口程序：echo $SHELL
+			启动GUI： 虚拟终端接口：startx &
+	
+	CLI: 命令行接口，prompt 
+			[root@localhost ~]# COMMAND 
+				prompt:
+					root: 当前登录用户
+					localhost:当前主机的主机名，非完整格式
+					~： 用户当前所在的目录(current directory), 也称为工作目录(working directory): 相对路径
+					#：命令提示符：
+						#: 管理员账号：拥有最高权限，能执行所有操作
+						$: 非root用户，普通用户，只拥有系统使用权限，不能执行系统管理操作，最好只用非管理账号登录，执行管理操作临时切换成管理账户，操作完，切换回来非管理账户
+								添加用户: useradd centos
+								切换用户: su - centos
+								然后显示：[centos@localhost ~]$ 
+	总结几个命令：
+		tty 查看当前终端设备
+		ifconfig 或 ip addr list
+		echo $SHELL 查看当前shell类型  echo 回显
+		ping 网络探测的回显请求，探测目标主机与当前主机之间的连通性
+		ctrl+c 终止ping, 也可以在命令输到一半，不想执行了，可以使用ctrl+c 
+		systemctl poweroff 关机
+		poweroff 也可以关机
+		halt 关机
+		systemctl reboot 重启, 也可以直接用reboot
+		iptalbles -L -n 
+		systemctl disable firewalld.service 关掉当前的防火墙
+		systemctl stop firewalld.service 永久关闭防火墙
+	
+	Linux的哲学思想：
+		1. 一切皆文件，几乎将所有资源统统抽象成文件形式： 包括硬件设备，甚至通信借口等；那么访问文件就只需要一个接口：
+				open() read() write() close() delete() create()
+		2. 由众多功能单一的程序组成：一个程序通常只做好一件事；组合小程序完成复杂任务；
+		3. 程序启动后尽量避免跟用户交互，目标：易于以编程方式实现自动化任务
+		4. 使用文本文件保存配置信息
+	思考：文件是什么？众多文件如何有效组织？分类机制：根--二级位置--三级位置
+		目录：路径映射  /dev/pts/2
+		文件：存储空间存储的一段流式数据，对数据可以做到按名存取；
+		文件系统：层级结构：有索引
+			/: 根 原初起点 根目录
+				第二层结构
+				第三层结构
+			--> 倒置树状结构
+			文件路径表示：
+				绝对路径：从根开始表示出的路径
+				相对路径：从当前位置开始表示的路径
+			文件名使用法则：
+				严格区分字符大小写，windows不区分
+				目录也是文件，在同一路径下，两文件不能同名
+				支持使用除了/以外的任意字符
+				最长不能超过255个字符
+				每个用户在系统上都有个home目录，别人不能随便进来的
+				工作目录：
+					/etc/sysconfig/network-scripts/ifcfg-eno16777736
+					basename: ifcfg-eno16777736
+					dirname: /etc/sysconfig/network-scripts
+				命令：~]# basename /PATH/TO/SOMEFILE
+							SOMEFILE
+					  ~]# dirname /PATH/TO/SOMEFILE
+							/PATH/TO
+				
+	回顾：
+		开源协定：GPL LGPL BSD Apache
+		BSD:
+			1. 如果二次发布的产品中包含源代码，则在源代码中必须带有原来的代码中的BSD协定；
+			2. 如果二次发布产品是二进制格式的库或程序，则需要在发布的文档或版权声明中说明包含原来的代码中的BSD协议；
+			3. 不可以用开源代码的作者或组织，以及原来的产品的名字做市场推广；
+		开源：代码的共产主义运动
+		
+		文件系统，文件，目录
+			倒置树状结构
+				目录
+				文件
+			文件名：严格区分大小写，路径分隔符：/
+			文件名以.开头的表示隐藏文件
+		路径：
+			绝对，相对
+		程序的组成部分：
+			二进制程序文件、库文件--> 可执行文件，只能通过16进制查看器查看
+				二进制文件能被独立执行
+				库文件不能被独立执行，只能被调用时执行
+			配置文件、帮助文件--> 可被查看其内容的文件
+		《穿越计算机的迷雾》《量子物理史话》
+		
+		人机交互界面：
+			GUI
+			CLI
+		命令通用格式：
+			COMMAND OPTIONS ARGUMENTS  命令 选项 参数，
+				COMMAND:
+					命令的作用：发起一个命令（请求内核将某个二进制程序运行为一个进程），程序-->进程 静态-->动态（有生命周期）
+					命令本身是一个可执行的程序文件；二进制格式的文件，有可能会调用库文件；
+						多数程序文件都存放在四个目录：/bin, /sbin(管理员才能执行的)，/usr/bin, /usr/sbin
+						安装一些应用之后，有些程序文件可能会放在：/usr/local/bin, /usr/local/sbin
+						普通命令：/bin/, /usr/bin, /usr/local/bin
+						管理命令：/sbin/,/usr/sbin, /usr/local/sbin
+						共享库：/lib, /lib64, /usr/lib, /usr/lib64, /usr/local/lib, /usr/local/lib64
+							32bits的库：/lib, /usr/lib, /usr/local/lib
+							64bits的库：/lib64, /usr/lib64, /usr/local/lib64
+						注意：并非所有的命令都有一个在其目录与之对应的可执行程序文件
+					命令必须遵循特定格式规范：
+						Windows: exe msi
+						Linux: ELF, 使用file命令： file /bin/ls 可以查看bin目录下，ls这个文件的内容格式的类型
+					命令分为两类：
+						由shell程序的自带的命令：内置命令（builtin）
+						独立的可执行程序文件，文件名即命令名；外部命令
+					shell程序是独特的程序，负责解析用户提供的命令，shell通过环境变量来定义工作特性，跟DOS一样的原理，要加入环境变量就可以直接运行，例如ls
+						环境变量：
+							PATH: 从哪些路径中查找用户键入的命令字符换对应的命令文件
+							当前系统的环境变量：echo $PATH
+								[root@localhost ~]# echo $PATH
+								/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+								查找顺序：自左向右
+						shell自带的命令是没有外部程序文件的，是在环境变量指定的路径里面找不到的
+						查看命令类型(内部命令/外部命令)：type COMMAND 
+						[root@localhost ~]# type ls
+						ls is aliased to `ls --color=auto'   外部命令
+						[root@localhost ~]# type type
+						type is a shell builtin		shell内部命令
+						如果把环境变量全部删除，那么就没有外部命令可执行了，只能通过绝对路径才能执行；只有shell内部命令能执行；
+				OPTION:
+					作用：指定命令的运行特性，或者调整命令运行时所要执行的代码和实现的功能
+					选项有两种表现形式：
+						短选项：-c, 例如：-l， -d，
+								注意：有些命令的选项没有-
+								如果同一命令使用多个短选项，多数可以合并
+									例如：ls -l -d /var 
+										  ls -ld /var 效果一样
+						长选项：--word, 例如：--help, --human-readable
+								注意：长选项不能合并
+						注意：有些选项可以带参数，此称为选项参数，而不要称为命令参数
+				ARGUMENTS:
+					命令的作用对象：命令对什么生效
+					注意：不同命令的参数：有些命令可同时带多个参数，多个之间用空白字符分割
+					例如：ls -ld /var 这里的var是作用对象
+			获取命令的使用帮助：
+				内部命令：help COMMAND
+				外部命令：
+					(1).命令自带简要格式的使用帮助
+						# COMMAND --help
+					(2).使用手册：manual, 系统必须有这个手册，手册文件通常位于：/usr/share/man
+						# man COMMAND
+							SECTION:
+								NAME 功能性说明
+								SYNOPSIS 语法格式
+								DESCRIPTION 描述
+								OPTIONS 选项
+								EXAMPLES 示例
+								AUTHOR 作者
+								BUGS 报告bug的方式
+								SEE ALSO 参考
+									
+									SYNOPSIS: 看懂语法规则
+										[] 可选参考
+										<> 必选
+										a|b|c 多选一
+										... 同内容可出现多个
+							使用手册还分为章节
+								压缩格式的文件，有章节之分 /usr/share/man man1 man2 ... 
+								man1: 用户命令，普通用户和管理员都可以使用的命令
+								man2: 系统调用的，程序员才会用
+								man3: c库调用
+								man4: 设备文件及特殊文件
+								man5: 文件格式，文件配置格式的说明
+								man6: 游戏的使用帮助
+								man7: 杂项
+								man8: 管理工具及守护进程
+							有些命令不止在一个man的章节存在，例如：man passwd 系统默认会到第一章节去找，在页面的最上面会出现PASSWD(1)表示第一章节
+								如果想专门查看第五章节：命令这样写：man 5 passwd 即可，页面最上面会输出：PASSWD(5) 
+							注意：并非每个COMMAND在所有章节下都有手册
+							如何知道一个命令在哪些章节有手册：whatis COMMAND
+									[root@localhost ~]# whatis passwd
+									sslpasswd (1ssl)     - compute password hashes
+									passwd (1)           - update user's authentication tokens
+									passwd (5)           - password file
+								whatis的执行过程是查询数据库进行的，手动更新数据库：make whatis
+								man命令打开手册以后的操作方法：
+									翻屏：空格键向文件尾部翻屏
+									b: 向文件首部翻屏
+									ctrl+d: 向文件尾部翻办屏
+									ctrl+u: 向文件首部翻半屏
+									回车键：一次向文件尾部翻一行
+									k: 向文件首部翻一行
+									G：跳转至最后一行
+									#G：跳转至指定行，1G：跳转至首部
+								文本搜索功能：
+									/keyword  从文件首部向文件尾部依次查找
+									?keyword  从文件尾部向文件首部依次查找
+										n：找到结果后表示下一个
+										N：上一个
+									查找时不区分大小写
+								q：退出
+							选项：man -M /PATH/TO/SOMEWHERE 到指定目录下查找命令手册并打开
+							练习：useradd命令的用法
+								1. 添加用户gentoo
+									useradd gentoo
+								2. 添加用户slackware,要求指定其所用的shell为/bin/tcsh
+									useradd -s /bin/tcsh slackware
+									tail -1 /etc/passwd 查看shell类型
+							id命令：查看所有用户
+					(3) info COMMAND
+						获取命令的在线文档
+					(4) 很多应用程序会自带帮助文档： /usr/share/doc/APP-VERSION
+						README: 程序的相关信息
+						INSTALL:安装帮助
+						CHANGES:版本迭代详细信息
+					(5) 主流发行版官方文档
+						http://www.readhat.com/doc
+					(6) 程序的官方文档---官方会提供Documentation
+					(7) 搜索引擎
+						 keyword filetype:pdf
+						 keyword site:...
+					书籍的出版社：O'Reilly Wrox 机械工业 电子工业 人民邮电 清华大学 水利水电出版社
+								
+			Linux文件系统：
+				1. 文件名名称严格区分大小写
+				2. 文件可以使用除/以外的任意字符
+				3. 文件名长度不能超过255个字符
+				4. 以.开头的文件为隐藏文件
+					. : 当前目录
+					.. : 当前目录上一级目录
+			工作目录： working directory
+			家目录： home
+			常用命令：
+				pwd: printing working directory, 显示当前工作目录
+				cd: change directory
+					cd [/PATH/TO/SOMEWHERE]
+					cd: 不带参数默认切换回home
+						注意：bash中~表示家目录
+						cd ~: 切换回自己的家目录
+						cd ~USERNAME: 切换到指定用户的家目录
+						cd -: 上一个目录和当前目录来回切换
+						cd ...: 回到上级目录
+						echo $PWD	输出当前工作目录
+						echo $OLDPWD  输出上一次的工作目录,两个bash的环境变量，是不断在改变的
+						cd $OLDPWD 相当于 cd -
+				ls: list 列出指定目录下的内容
+					ls [OPTION]... [FILE]...
+					ls -a: 列出全部内容，包括隐藏文件
+					ls -A: 显示除.和..之外的所有文件
+					ls -a /var/: 显示文件夹/var/的内容
+					ls -l: --long 长格式列表，即显示文件的详细属性信息
+						-rw-r--r--.  1 root root     1441 Nov  9 09:28 initial-setup-ks.cfg
+						-：文件类型 -,d,b,c,l,s,p, 都是表示文件类型
+						rw-r--r--：三组 
+							rw-：左三位表示文件属主的权限
+							r--：中三位表示文件属组的权限
+							r--：右三位表示其他用户（非属主、属组）的权限
+						1：数字表示文件被硬链接的次数
+						root: 文件的属性
+						root: 文件的属组
+						1441：数字表示文件的大小，单位是字节
+						Nov  9 09:28：文件最后一次被修改的时间
+						initial-setup-ks.cfg：文件名
+					ls -l -h， --human-readable: 对文件大小换算，非精确		
+					ls -lh 选项部分合并写	
+					ls -ld : 看文件夹自身的属性，不是这个文件夹里面的内容， ld要结合起来使用
+							[root@localhost ~]# ls -ld Music
+							drwxr-xr-x. 2 root root 6 Nov 29 06:44 Music
+					ls -r: 逆序显示 ls -lr 逆序显示详细信息
+					ls -R: recursive 递归显示
+				cat: concatenate files and print on the standard output
+						连接文件并将文件以标准形式显示出来，是文本文件显示工具，不要用于二进制文件
+					[root@localhost /]# file /etc/fstab    查看文件类型
+					/etc/fstab: ASCII text
+					cat /etc/fstab /etc/issue 同时显示多个文件，连接显示
+					cat -n /etc/fstab  输出的文件内容编号
+					cat -E /etc/fstab  在每行结尾显示$
+				tac: 也是文本文件查看工具，文件内容是逆序（行）显示
+				file: 查看文件内容的类型
+					大多数选项不怎么使用
+				echo:回显
+					echo [SHORT-OPTION]... [STRING]...
+						-n：不进行换行
+							例如：[root@localhost ~]# echo "hello"
+									hello
+									[root@localhost ~]# echo -n "hello"
+									hello[root@localhost ~]#    这里没有换行
+						-e: 让转义符生效
+						[root@localhost ~]# echo -e "hello \nworld"    换行符\n生效
+							hello 
+							world
+						[root@localhost ~]#
+						STRING可以使用引号，单引号和双引号均可用
+							单引号：强引用，变量不执行替换，不起作用
+							双引号：弱引用，变量会替换
+								[root@localhost ~]# echo "$SHELL"
+								/bin/bash
+								[root@localhost ~]# echo '$SHELL'
+								$SHELL
+							注意：变量引用的正规符号：${SHELL},但是{}可以省略
+				关机或重启命令：
+					shutdown
+						 shutdown [OPTIONS...] [TIME] [WALL...]
+							OPTIONS:
+								-h: halt
+								-r: restart
+								-c: cancel
+							TIME:
+								now  立刻关机
+								hh:mm  几点几分
+								+m  几分钟之后
+					wall: 发广播给登录系统的其他用户
+						wall "i'm gonna shutdown the machine"
+					shutdown -h +5  当管理员执行了5分钟后关机命令后，系统会自动wall给所有登录的用户，提醒将会5分钟后关机
+					shutdown -c 取消关机
+					[root@localhost ~]# shutdown -r +10 "hello, the system is going to restart after 10 minus, thanks a lot."
+						可以在shutdown命令后面加上wall的命令
+				日期相关命令：
+					date:
+						显示时间：date [OPTION]... [+FORMAT] 
+							[root@localhost ~]# date +%F   后面的+%F是格式化字符串
+							2018-01-17
+							[root@localhost ~]# date +"%F %T"  注意，这里要用双引号引起来，告诉解释器这里是一个字符串
+							2018-01-17 07:22:16
+							[root@localhost ~]# date +%s   显示时间戳 unix元年，unix诞生日 1970.01.01 00:00:00
+							1516191891
+						设置时间：date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]  
+							date 080808082015.12  把时间设置成: 2015年8月8日8时8分12秒
+					clock/hwclock, 两个命令是一个 hwclock 硬件时钟
+						[root@localhost ~]# which clock     查找clock命令在哪里
+						/usr/sbin/clock
+						[root@localhost ~]# which hwclock
+						/usr/sbin/hwclock
+						[root@localhost ~]# file /usr/sbin/clock		
+						/usr/sbin/clock: symbolic link to `hwclock'		clock是hwclock的一个软链接
+
+						hwclock - query or set the hardware clock (RTC)
+						Linux启动后有两套时钟，启动时会从硬件读取时间，启动完了就不再与硬件相关
+						date命令看到的是系统时钟
+							-s, --hctosys
+								Set the System Time from the Hardware Clock.
+							-w, --systohc
+								Set the Hardware Clock to the current System Time.
+					cal: - display a calendar
+						cal 2018显示2018年的日历
+						cal 10 2018 显示2018年10月的
+						cal 01 01 2018 显示2018年1月1日的
+				课外作业：
+					which - shows the full path of (shell) commands.
+					whereis - locate the binary, source, and manual page files for a command
+					who - show who is logged on
+						-a, --all
+							same as -b -d --login -p -r -t -T -u
+						-b, --boot
+							time of last system boot
+					w - Show who is logged on and what they are doing.
+						 w [options] user [...]
+						 
+				如何使用man
+					whatis keyword
+					man # keyword
+						SECTION:
+							NAME
+							SYNOPSIS:
+								[]可省略的内容
+								<>必须提供
+								|多选一
+								{}分组的，不是必须的
+								...可以出现多次的
+							man快捷键：按h看帮助
+								Space 后翻页
+								b 前翻页
+								Enter 后翻一行
+								k 前翻一页
+								Ctrl+d 后翻半页
+								Ctrl+u 前翻半页
+								q 退出
+								#G 跳至某行 1G跳至第一行 G跳至最后一行
+								/keyword 搜索
+								?keyword 搜索
+									n 下一个
+									N 上一个
+				基础命令：
+					pwd cd ls echo date clock hwclocl cal cat tac file type tty shutdown reboot halt poweroff
+		
+		
+		Linux文件系统：
+			硬件--内核--系统调用--壳shell--库函数--应用程序（通过系统调用，库函数开发）
+			Linux程序的编译方式: 通用的系统库，Glibc库--GNU的标准C库，是Linux操作系统上必须提供的一个最基本的库，市面上的应用程序或多或少的调用了这个库中的函数/模块
+			动态链接式编译：库文件是事先存在系统中的（Linux而言是Glibc），程序运行时，操作系统中要有调用的库文件才能正确运行
+			静态编译：把所依赖/调用的库直接复制到程序中，一起打包，这样程序会更加通用，但是程序会很大，对系统资源是个负担，
+				相当于要在内存中多开辟空间，动态链接式是共享库，内存中只需要载入一份
+			
+			进程的类型：
+				终端：硬件设备，关联一个用户接口，例如远程连接管理，只要用户使用交互式接口启动的都叫与终端相关
+				与终端相关：通过终端启动
+				与终端无关：操作系统引导启动过程中自动启动
+			操作系统的组成：
+				静态：kernel, application（库也是application）
+				文件系统：组织成层级结构，方便查找文件
+					应用程序组成：二进制 库 配置 帮助
+				任何时候使用操作系统都是在操作系统文件树里面切换working directory
+					Windows的磁盘分区概念不同,windows下可以随意访问某个磁盘下的任意文件
+					Linux下，所有文件必须从根开始，服从根的管理和分配，有层级结构划分；
+							新的分区，必须挂载mount在根的下面，被根管理；例如一个U盘要连接，系统必须把这个U盘挂载在（任意）一个空目录下，这个空目录就是挂载点，一般挂载在/Media下
+							FHS: Filesystem Hierarchy Standard 文件系统层级结构标准，所有Linux发行版必须遵循这个文件系统标准
+								必须了解每一个目录的意义：这样就能了解系统的组成，相关参考资料：http://www.pathname.com/fhs/pub/fhs-2.3.pdf
+								/bin: 所有用户可用的基本命令程序文件
+								/sbin: 供系统管理员使用的工具程序
+								/boot: 引导系统启动加载器必须用到的各静态文件：kernel, initramfs(initrd),grub等
+								/dev: 设备文件及特殊文件
+									设备有两种类型：字符设备、块设备
+										字符设备（线性设备）：数据交换以字符为单位进行，键盘显示器---按顺序访问
+										块设备（随机设备）：多个设备打包发送，硬盘---可以随机访问
+								/etc: Host-specific system configuration 系统程序的静态配置文件，只能为静态
+								/home: User home directories(optional) 可选的，可独立挂载一个分区的，no program should rely on this directory
+										普通的家目录的集中位置；一般每个普通用户的家目录默认为此目录下与用户名同名的目录 /home/USERNAME
+								/lib: Essential shared libraries and kernel modules
+									The /lib directory contains those shared library images needed to boot the system and run the commands in the root filesystem, ie. by binaries in /bin and /sbin.
+									为系统启动或根文件系统上的应用程序（/bin /sbin 提供共享库，以及为内核提供内核模块
+									libc.so.*: 动态链接C库
+									ld*: 运行时链接器/加载器
+									modules: 用于存储内核模块的目录
+								/lib64: 64位系统特有的存放64位共享库的路径
+								/Media: Mount point for removeable media, cdrom, floppy etc
+								/mnt: Mount point for a temporarily mounted filesystem
+									其他非关键性文件系统的临时挂载点
+								/opt: Add-on application software packages， 附加引用程序的安装位置，第三方应用程序
+								/root : Home directory for the root user (optional)
+								/srv : Data for services provided by this system 当前主机为服务提供的数据，有特殊性，一般是当前主机自己提供的
+								/tmp : Temporary files 为那些会产生临时文件的程序提供的用于存储临时文件的目录，供所有用户执行写入操作，有特殊权限
+								/usr: 自己就是一个层级结构，目录里面还有别的文件夹；
+									全称：全局共享只读数据路径 universal shared read-only file, 跟user没有关系
+									/usr is the second major section of the filesystem. /usr is shareable, read-only data. 
+									That means that /usr should be shareable between various FHS-compliant hosts and must not be written to. Any information that is host-specific or varies with time is stored elsewhere.
+									Large software packages must not use a direct subdirectory under the /usr hierarchy.
+										bin,sbin
+										lib, lib64
+										include: C程序头文件
+										share: 命令手册页和自带文档等架构特有的文件的存储位置
+										local: 另一个层级目录
+										X11R6：X-window程序的安装位置
+										src: 程序源码文件的存储位置
+								/usr/local: 用来存储第三方程序的，让系统管理员安装本地应用程序或第三方程序，比如安装一个程序的新版本，这时候老版本存在usr里面，老版本可能会被其他应用所依赖，所以新版本不会覆盖老版本，会安装在local下面
+									The /usr/local hierarchy is for use by the system administrator when installing software locally. It needs to
+									be safe from being overwritten when the system software is updated. It may be used for programs and data that
+									are shareable amongst a group of hosts, but not found in /usr.
+									Locally installed software must be placed within /usr/local rather than /usr unless it is being installed to
+									replace or upgrade software in /usr
+								/var: contains variable data files. This includes spool directories and files, administrative and logging data, and transient and temporary files.	
+									存储经常发生变化的数据，例如：logs
+										cache 	Application cache data
+										lib 	Variable state information
+										local 	Variable data for /usr/local
+										lock 	Lock files
+										log 	Log files and directories
+										opt 	Variable data for /opt
+										run 	Data relevant to running processes
+										spool 	Application spool data
+										tmp 	Temporary files preserved between system reboots
+								以上目录就是FHS所规定的必须存在的目录，可以读一下http://www.pathname.com/fhs/pub/fhs-2.3.pdf，以深入了解。
+								两个特殊目录：
+									/proc : Kernel and process information virtual filesystem
+											The proc filesystem is the de-facto standard Linux method for handling process and system information, rather
+											than /dev/kmem and other similar methods. We strongly encourage this for the storage and retrieval of process
+											information as well as other kernel and memory information.
+											为了保证一切皆文件二设定的，基于内存（临时的）的虚拟文件系统，为内核及进程运行存储相关信息的。它们多为内核参数，
+											例如：net.ipv4.ip_forward, 虚拟为net/ipv4/ip_forward, 存储在/proc/sys/下，所以完整路径：/proc/sys/net/ipv4/ip_forward, 参数值保存在ip_forward文件中
+									/sys: sysfs虚拟文件系统提供了一种比proc更为理想的访问内核数据的途径，主要作用在于为管理Linux设备提供了一种统一模型的接口	
+										参考文件：https://www.ibm.com/developerworks/cn/linux/l-cn-sysfs/
+																				
+			Linux系统上的文件类型：ls -l命令查看得到
+				-rw-------.  1 root root     1426 Nov  3 06:12 anaconda-ks.cfg
+				drwxr-xr-x.  2 root root        6 Nov 29 19:44 Desktop
+				
+				起始字符说明：
+				-: 常规文件，即f
+				d: directory, 目录文件，实现路径映射的，跟windows不同是文件夹
+				b: block device, 块设备，用来映射块设备的文件，支持以block为单位，进行随机访问
+				c: character device, 字符设备文件，支持以character为单位，进行线性访问，有秩序的
+					major number: 主设备号，用于标识设备类型的，进而确定要加载的驱动程序
+					minor number: 次设备号，用于标识同一类型中的不同设备
+					主设备号确定了驱动程序，次设备号确定了同一个设备下连接的不同设备，两个号码用逗号分隔，早期时候用8位二进制来表示的
+						例如: ls -l /dev
+						crw-rw----. 1 root video    10, 175 Jan 18 20:20 agpgart
+						crw-------. 1 root root     10, 235 Jan 18 20:20 autofs
+							10: major number
+							175: minor number
+				l: symbolic link, 符号链接文件，快捷方式，软连接，soft link
+				p: pipe，命名管道，有名字的管道，还有匿名管道
+				s: socket, 套接字文件 实现两个进程进行通信时进行套接的,主要用于服务提供的
+			
+			基本命令：
+				命令类型：
+					命令根据其是否在文件系统上存在一个与之对应的独立文件，可以分为内建命令和外部命令
+						外部命令：在系统文件里面都有一个独立文件，理论上说所有命令都是外部命令
+						内部命令：外部命令自带很多命令，例如外部命令bash自带了很多命令
+						区分内外部命令： type命令，如果提示是builtin就是内部命令
+													外部命令显示为命令文件路径
+												注意：命令可以有别名，别名可以与原名相同，此时原名被隐藏
+												例如：[root@localhost ~]# type ls
+													  ls is aliased to `ls --color=auto'
+												如果想运行命令本身：\ls，这时候输出的结果是不带颜色的
+										查看所有命令别名：alias, 可以自定义命令别名
+										自己定义别名：alias NAME='COMMAND', 只对当前shell登录进程有效,如果想永久有效，去改配置文件
+										撤销别名：unalias NAME
+		
+				which - shows the full path of (shell) commands.显示命令完整路径
+					[root@localhost ~]# which which
+					alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'      # 默认显示别名
+						/usr/bin/alias
+						/usr/bin/which
+
+					[root@localhost ~]# which --skip-alias which      # 不显示别名
+					/usr/bin/which
+				whereis - locate the binary, source, and manual page files for a command
+					whereis [options] name
+						-b: 搜索二进制
+						-m: 搜索手册
+						-s: 搜索源文件
+				who - show who is logged on
+				w - Show who is logged on and what they are doing. 增强版的who命令
+				
+				
+		bash的基础特性：
+			命令历史：shell进程会在其会话中保存此前用户提交执行的命令
+				~]# history 能提供从装机到现在所有执行过的历史命令，这些历史记录是保存在文件中的
+							history是shell的内嵌命令，是shell的特性
+							定制history的功能可以通过环境变量实现
+								HISTSIZE: 定义了history命令历史的保存条数，通过echo $HISTSIZE可以查看
+								HISTFILE: 持久保存命令历史的文件， 通过echo $HISTFILE获得， 
+								[root@localhost ~]# echo $HISTFILE
+								/root/.bash_history		进入到root目录后，通过 cat .bash_history可以查看到之前已经保存的历史，本次开机后的命令还保存在内存中，并未写入
+							查看history的用法： help history
+								history -d 100 删除history的第100条记录
+								history -d 100 5 从100条开始删5条
+								history -c 清空内存中的历史记录，可以通过-r读回来
+										-w	write the current history to the history file and append them to the history list 将当前历史写入文件保存
+										-r 	从/root/.bash_history中读到内存中
+								history 10 显示最近10条
+								!5: 再次执行历史列表中的第5条命令
+								!!: 再次执行上一次命令，直接用上方向键就行了
+								!STRING: 再一次执行命令历史列表中最近一个以STRING开头的命令
+							调用上一条命令的最后一个参数：ESC+.   ESC按一下后可以松开再按.
+								例如执行了 ls /root 之后，需要再次是从/root，cd ESC+.就可以达到cd /root的效果
+								也可以使用!$，例如：cd !$ 就相当于cd /root，这些快捷键应该会再写bashshell的时候有用
+						控制历史文件记录的方式：
+							环境变量：HISTCONTROL
+								ignoredups: 忽略重复命令
+								ignorespace: 忽略以空白字符开头的命令,设置： HISTCONTROL=ignorespace， 然后只要命令以空格开头，系统都不记录
+								ignoreboth: 以上两者同时生效
+							修改变量的值：
+								NAME='VALUE' 仅对当前shell进程有效
+				回顾：
+					FHS、命令以及bash命令历史
+						FHS：非常基础和重要的
+							/bin, /sbin 存放二进制文件；/lib, /lib64存放库文件， /etc配置文件, 
+							/home /root 用户家目录
+							/boot 引导文件
+							/media /mnt 挂载
+							/proc /sys 伪文件/虚拟文件系统
+							/tmp 临时文件
+							/srv 为服务提供数据
+							/opt 独立的文件系统
+							/dev 放设备的
+							/usr 有很多目录，提供全局共享的只读文件路径，安装程序的，关键的服务类 工具类的 
+								bin sbin lib lib64 share include
+							/usr/local
+							/var 经常发生变化的
+								cache lib log 
+					命令：which whereis who w alias unalias
+					命令历史：history
+					文件类型：-,d,b,c,l,p,s
+	Linux基础知识
+		bash基础特性：
+			命令补全：tab键
+				shell程序会在接收到用户执行命令的请求，分析完成之后，最左侧的字符串会被当做命令；
+				命令查找机制：
+					1. 查找内部命令；
+					2. 根据PATH环境变量中设定的目录，自左而右逐步搜索目录下的文件名；
+				给定的打头字符串，如果能唯一标识某命令程序文件，则直接补全；
+				如果不能唯一标识某命令程序文件，再按一次tab键一次，会给出列表；
+			路径补全：按tab键也可以，实际上原理不一样；路径补全是根据给定的起始路径补全
+			使用补全机制能避免出错
+		目录管理类的命令：
+			mkdir, rmdir
+			 mkdir [OPTION]... DIRECTORY...
+				-p: 自动按需创建父目录
+				-v: 打印创建的内容
+				-m MODE: 创建目录时直接给定权限，否则是默认权限
+			 rmdir [OPTION]... DIRECTORY... 删除空目录，目录不空不能删除
+				-p: 删除某空目录后，其父目录是空，则删除，以此向上递归
+				-v: 显示过程
+			
+			问题1：如何创建/tem/x/y1, /tem/x/y2, /tem/x/y1/a, /tem/x/y1/b 
+			问题2：如何创建a_c, a_d, b_c, b_d
+			bash的基础特性之：命令行展开
+				~: 自动展开为用户的家目录，或指定的用户家目录
+				{}: 可承载一个以逗号分隔的路径列表，并将其展开为多个路径
+					例如：/tem/{a,b}相当于/tem/a, /tem/b
+				mkdir -pv /tem/x/{y1/{a,b},y2} 一个命令可以解决第一个问题,然后tree /tem可以查看， 如果没有tree，则使用yum install tree安装
+				mkdir -v {a,b}_{c,d}, 解决第二个问题
+			问题3：创建如下目录结构
+				/tem/mysysroot/
+					bin
+					sbin
+					etc
+						sysconfig
+							network-scripts
+					usr
+						bin
+						sbin
+						local
+							bin
+							sbin
+							etc
+							lib
+						lib
+						lib64
+					var
+						cache
+						log
+						run
+				mkdir -pv /tem/mysysroot/{bin,sbin,etc/sysconfig/network-scripts,usr/{bin,sbin,local/{bin,sbin,etc,lib},lib,lib64},var/{cache,log,run}}
+			 
+			tree命令，以树状结构显示文件层级结构，没有安装的话使用yum install tree
+				-L # 指定要显示的层级数
+			
+		bash的基础特性：命令的执行状态结果
+			bash通过状态返回值来输出此结果
+				成功：0
+				失败：1-255
+			命令执行完成后，其状态返回值会保存于bash的特殊变量$?中,执行完命令接着使用echo $?即可获得命令执行的返回值
+				例如：ls /etc
+					   echo $?
+		引用命令的执行结果：
+			$(COMMAND)或`COMMAND`    注意这里不是单引号
+			例如：mkdir $(date +%Y%m%d%H%M%S)
+		bash的引用：
+			强引用：''	变量也不会替换
+			弱引用：""  变量会替换 
+			命令引用：$(COMMAND)或者`COMMAND`
+		bash的快捷键：
+			ctrl+a 跳转至命令行首
+			ctrl+e 跳转至命令行尾
+			ctrl+u 删除命令行开头到光标之间的所有字符
+			ctrl+k 删除光标到末尾的所有字符
+			ctrl+l 清屏
+		
+	文本文件查看类命令：
+		cat,tac,head,tail,more,less
+		
+		分屏查看：more less
+		head:看一个文件的前#行，默认显示10行
+			head -n 20 /etc/rc.d/init.d/functions  查看前20行
+			或 head -20 /etc/rc.d/init.d/functions
+		tail: 查看一个文件的后#行，默认10行
+			tail -n 20 /etc/rc.d/init.d/functions  查看最后20行
+			或 tail -20 /etc/rc.d/init.d/functions
+			tail -n 20 -f /etc/rc.d/init.d/functions
+				-f：如果被查看的文件是动态增加的，可以实时查看追加的内容，用于查看日志增加很有用；
+	stat命令
+		stat - display file or file system status
+		stat FILE...
+
+		文件：两类数据组成
+			元数据：metadata  一本书的目录，描述属性，使用stat看到的是文件的元数据
+			数据：data		  一本书的正文，使用cat等文本查看工具看到的就是数据
+		Access: 2018-01-21 12:12:27.075999937 +0800   最近访问时间
+		Modify: 2017-05-03 18:17:50.000000000 +0800	  数据改变时间，例如增加数据内容
+		Change: 2017-11-03 06:07:59.815998266 +0800   元数据改变时间，例如改名
+	touch命令：
+		 touch - change file timestamps, Update the access and modification times of each FILE to the current time.
+		-a     change only the access time
+		-c,    do not create any files
+		-m     change only the modification time
+		-t STAMP use [[CC]YY]MMDDhhmm[.ss] instead of current time
+		例如：
+		[root@localhost tem]# touch -mt 200001022233.56 functions 
+		[root@localhost tem]# stat functions 
+			Access: 2018-01-21 21:30:12.606008000 +0800   访问时间没有改变
+			Modify: 2000-01-02 22:33:56.000000000 +0800	  改变了Modify时间
+			Change: 2018-01-21 21:32:44.853006574 +0800   元数据时间就是执行改变Modify时间命令的时间
+		注：Access和Modify时间的改变，元数据时间Change时间就会改变成执行Access和Modify时间命令的时间
+	
+	文件管理命令：cp mv rm
+		cp命令：copy, 复制文件是复制的文件的数据，而不是复制的文件的metedata, 复制的过程：先在目标位置新建一个空文件，然后从源文件抽取数据流，填充到目标文件，这样就完成了复制；元数据不会被复制过来；
+		cp [OPTION]... [-T] SOURCE DEST  单源文件复制
+		cp [OPTION]... SOURCE... DIRECTORY  多源文件复制，SOURCE...表示多个源
+		cp [OPTION]... -t DIRECTORY SOURCE... 多源文件复制的另外一种写法，（多）源文件写在后面，-t表示targeet
+			单源复制：cp [OPTION]... [-T] SOURCE DEST
+				如果目标不存在，则新建目标文件，再填充源文件的数据流进去新文件；
+				如果dest存在
+					dest是非目录文件，则覆盖目标文件；
+					如果dest是目录，则先在dest目录中创建一个与源文件同名的文件，再将源文件数据流复制到目标文件
+			多源复制（多个源文件）：cp [OPTION]... SOURCE... DIRECTORY
+				如果dest不存在，则不能复制；
+				如果dest是非目录文件，则不能复制；
+				如果dest是目录文件，则分别复制每一个源文件至目标目录中，并保留原名；
+			常用选项：
+				-i: interactive 与用户交互，提示是否覆盖；
+				-f: force 强制覆盖目标文件，不提醒；如果目标文件不能打开，则移除目标文件，并复制
+				-r: 递归复制目录
+				-d: 复制符号链接文件本身，而非其指向的源文件
+				-a：-dR --preserve=all, archive,用于实现归档
+				--preserve=
+					mode:权限
+					ownership: 属组和属主
+					timestamps: 时间戳
+					context: 扩展属性
+					links: 符号链接
+					all: 上述所有属性
+		mv: move or rename
+			没有-r选项
+			-i: interactive
+			-f: force
+		rm: remove
+			-i: interactive
+			-f: force
+			-r: recursive
+			自杀的方法：rm -rf /
+						rm -rf /*
+			注意：生产环境，不要直接删除，而是mv到一个目录；
+	变量：
+		命名的内存空间--是在程序中快速便捷的引用一块内存空间，而在里面实现数据存取的机制
+			变量类型：整型，浮点型，字符型，布尔型，日期时间型
+				字符型
+				数值型
+					精确数值型：整型
+					近似数值：单精度，双精度
+				变量类型决定了数据：
+					存储格式
+					数据范围
+					参与运算的方式
+			问题：浮点数据如何存储，单精度，双精度是什么？
+		变量的赋值操作：
+			name=tom
+回顾：
+	bash基础特性：命令补全、路径补全、命令引用
+	文件或目录的复制、移动、删除
+	变量：变量类型
+		储存格式、数据范围、参与运算
+
+bash的基础特性：
+	globbing:文件名通配(整体文件名匹配，而非部分)
+		匹配模式：元字符
+			*: 匹配任意长度(0长度也匹配)的任意字符
+			?: 匹配任意单个字符
+			[]: 匹配指定范围内的任意'单个'字符
+				几种特殊格式：
+					[a-z],[A-Z],[0-9],[a-z0-9],[abcxyz]
+						注：[a-z]和[A-Z]将匹配任意一个字母，不区分大小写
+					[[:upper:]]: [:upper:]表示所有大写字母
+					[[:lower:]]: [:lower:]表示所有小写字母
+					[[:alpha:]]: 所有字母
+					[[:digit:]]: 所有数字
+					[[:alnum:]]: 所有字母和数字
+					[[:space:]]: 所有空白字符
+					[[:punct:]]: 匹配所有标点符号
+					touch p\ a: 这样将会创建一个p a的文件，中间的空格因为\被转义，所以表示其本身的意思空格,而不是分隔符
+					pa[0-9][0-9]: pa跟两个数字
+			例如：ls /etc/pa*   匹配pa开头的所有文件
+				  ls -d /etc/pa???? 
+			[^]:匹配指定范围外的任意单个字符
+				[^[:upper:]]: 任意大写字母以外的字符
+				[^[:alnum:]]: 非数字，非字母的字符
+			Linux命令行可以直接使用globbing机制来匹配
+			
+			练习1：显示/var/log目录所有以l开头，以一个小写字母结尾，且中间出现一位数字的文件或目录；
+				ls /var/l[0-9][[:lower:]]  如果加-d ls -d /var/l[0-9][[:lower:]], 则是目录的，就只显示目录本身，文件不受影响，会被正常显示
+			练习2：显示/etc目录下，以任意一位数字开头，且以非数字结尾的文件或目录
+				ls /etc/[^[:alpha:]]*[^[:digit:]]
+			练习3：显示/etc目录下，以非字母开头，后面接一个字母及其他任意长度任意字符的文件或目录
+				ls /etc/[^[:alpha:]][a-z]*
+			练习4：复制/etc目录下，所有以m开头，以非数字结尾的文件或目录至/tem/magedu.com目录
+				mkdir /tem/magedu.com
+				cp -r /etc/m*[^[:digit:]] /tem/magedu.com/
+				\cp -rf /etc/m*[^[:digit:]] /tem/magedu.com/  强行复制并覆盖，不提示，将cp转义掉，因为系统默认cp是cp -i的alias
+			练习5：复制/usr/share/man目录下，所有以man开头，后跟一个数字结尾的文件或目录至/tem/man/目录下
+				mkdir /tem/man
+				cp -ia /usr/share/man/man*[0-9] /tem/man
+			练习6：复制/etc目录下，所有以.conf结尾，且以m,n,r,p开头的文件或目录至/tmp/conf.d/目录下；
+				[root@localhost ~]# mkdir /tem/conf.d
+				[root@localhost ~]# cp -ia /etc/[mnrp]*.conf /tem/conf.d
+IO重定向及管道：
+	程序:指令+数据
+		程序也有IO
+		可用于输入的设备：文件，键盘设备，文件系统上的常规文件，网卡
+		可用于输出的设备：显示器，文件系统上的常规文件，网卡
+		程序的数据流有三种：
+			输入数据流： <-- 标准输入(stdin:standard input),键盘
+			输出数据流：--> 标准输出(stdout),显示器
+			错误输出流：--> 错误输出(stderr),显示器,是解释器辅助产生的数据流
+			fd: file descriptor, 文件描述符
+				标准输入：0
+				标准输出：1
+				错误输出：2
+	IO重定向：
+		输出重定向：> 命令执行结果不显示出来，而是导出到另外的文件；
+			因为一切皆文件，甚至可以将结果输出到设备上
+				例如：cat /etc/issue > /dev/pts/0 这就将issue的内容传输到终端上去了，在终端会显示issue的内容
+				注意：重定向很危险，cat /etc/issue > /dev/sda 这样会把硬盘的数据全部覆盖掉，因为/dev/sda是指硬盘，硬盘也是用文件表示的
+				特性：覆盖重定向，直接覆盖，不提示的
+		输出重定向：>>
+			特性：追加输出
+		为了避免风险，使用set命令
+			set -C 禁止通过输出重定向覆盖已存在的文件
+			例如：set -C   关掉覆盖功能，仅仅对当前shell有效
+				  cat /etc/issue > /tem/issue.out 如果issue.out已经存在，则命令执行失败
+			真要覆盖： 	  cat /etc/issue >| /tem/issue.out
+					set +C 关闭功能，可以重定向覆盖了
+		将错误信息输出：2> 2>>
+			cat /etc/issue1 2> /tem/issue.out
+			例如：[root@localhost ~]# cat /etc/issue1 > /tem/issue.out
+					cat: /etc/issue1: No such file or directory    这里提示不能输出，因为issue1不存在
+				[root@localhost ~]# cat /etc/issue1 2> /tem/issue.out  现在就可以输出了
+				[root@localhost ~]# cat /tem/issue.out
+				cat: /etc/issue1: No such file or directory
+		合并正常输出流和错误输出流：
+			(1) 使用&>, &>>输出不管对错的信息
+			(2) COMMAND > /PATH/TO/SOMEFILE 2>&1  
+				COMMAND >> /PATH/TO/SOMEFILE 2>&1    追加只需要改前面的>
+			
+				详细解释看文章：http://blog.csdn.net/ithomer/article/details/9288353
+					注意这里的>指的是标准输出，实际上应该是1>这样子；一般将1省略掉；
+					2>指的是错误输出， COMMAND > /PATH/TO/SOMEFILE 2>&1里的2>&1是表示将错误输出重定向到标准输出；
+					1不是指的文件，而是指的标准输出管道，&指的是在后台执行，相当于是二次重定向
+			特殊设备：/dev/null  任何数据输出给/dev/null都会被丢弃，用于接收毫无意义的输出
+				例如：ls carrr &> /dev/null  不管成不成功，全部输出到/dev/null
+					  echo &?    这里查看上一条命令有没有执行成功
+				这种方式用来只需要看状态码的情形；
+		输入重定向：<
+			tr - translate or delete characters   
+			tr [OPTION]... SET1 [SET2]   tr命令不接受file作为参数，说明是需要输入重定向的
+				把输入的数据当中的字符，凡是在SET1定义范围内出现的，通通对位转换为SET2出现的字符
+					例如在命令行：
+					[root@localhost ~]# tr [a-z] [A-Z]      命令行也可以这样，通过键盘输入数据，这里也可以写成引号：tr 'a-z' 'A-Z'
+						how are you 
+						HOW ARE YOU
+					[root@localhost ~]# tr [a-z] [A-Z] < /etc/issue    输入文件/etc/issue，并将小写改成大写
+					\S
+					KERNEL \R ON AN \M
+					
+					[root@localhost ~]# tr -d [Kbc] < /etc/issue     -d删除的意思，这里是删除[]里面包含的字符
+					\S
+					ernel \r on an \m
+				注意：不会修改原文件，只是将原文件输入
+			<< : HERE DOCUMENT << 
+				(1). cat << EOF(end of file, 输入EOF就是告诉解释器，输入完了)
+						[root@localhost ~]# cat << EOF
+						> HELLO
+						> EOF
+						HELLO
+
+				(2). cat > /PATH/TO/SOMEFILE << EOF   这里会生成SOMEFILE这个文件
+						[root@localhost ~]# cat > cat.out <<EOF
+						> HELLO
+						> this is << EOF test
+						> EOF
+						[root@localhost ~]# cat cat.out
+						HELLO
+						this is << EOF test
+		管道：连接程序，实现将前一个命令的输出直接定向后一个程序当作输入数据流
+			COMMAND1 | COMMAND2 | COMMAND3| ...
+				
+				[root@localhost ~]# tr [a-z] [A-Z] < /etc/issue
+				\S
+				KERNEL \R ON AN \M
+
+				[root@localhost ~]# cat /etc/issue | tr [a-z] [A-Z]    这里是将cat命令的输出直接当作输入给后一个命令
+				\S
+				KERNEL \R ON AN \M
+			
+			[root@localhost ~]# who | head -2 | tr [a-z] [A-Z] | tr -d [0-9]    看登录了几个终端，只输出前两行，将小写换成大写，删除所有的数字
+			USER   :           -- : (:)
+			ROOT     PTS/        -- : (...)
+		
+		经常跟管道配合使用的命令
+			tee - read from standard input and write to standard output and files
+			tee [OPTION]... [FILE]...
+				-a, --append  append to the given FILEs, do not overwrite
+			
+			[root@localhost ~]# who | tee -a /tem/tee.who | tr [a-z] [A-Z]   这里的tee命令将who的输出分成了两份，一份给了文件/tem/tee.who，一份给了tr命令，相当于可以以文件的形式保存命令执行结果
+				USER01   :0           2018-01-21 12:12 (:0)
+				ROOT     PTS/1        2018-01-25 19:56 (192.168.8.1)
+				ROOT     PTS/2        2018-01-25 23:08 (192.168.8.1)
+				USER01   PTS/0        2018-01-24 22:34 (:0)
+			[root@localhost ~]# cat /tem/tee.who
+				user01   :0           2018-01-21 12:12 (:0)
+				root     pts/1        2018-01-25 19:56 (192.168.8.1)
+				root     pts/2        2018-01-25 23:08 (192.168.8.1)
+				user01   pts/0        2018-01-24 22:34 (:0)
+		练习：将/etc/passwd的前6行转换成大写输出到屏幕上
+			head -n 6 |tr [a-z] [A-Z]
+
+	用户、组、权限管理
+		Multi-tasks, Multi-Users 
+		每个使用者：用户ID，专用的识别码
+			用户标识、密码：
+				认证：Authentication
+				授权：Authorization
+				审计：Account / Audition 看有没有乱用权限
+			组：用户组-->用户的容器，将多个用户合并形成一个逻辑组件，便于权限分配
+		对于Linux，用户类别：
+			管理用户
+			普通用户
+				系统用户
+				登录用户
+			用户标识：UserID, UID
+				默认：16位二进制数字：0-65535
+					管理员：0
+					普通用户：1-65535，一般只用到60000
+						系统用户：1-999(centos7), 1-499(centos5-6)
+						登录用户：1000-60000(centos7)，500-60000(centos5-6)
+				名称解析：名称转换
+					Username <--> UID
+					根据名称解析库进行：/etc/passwd 这个文件保存的是用户的解析库
+		用户组：
+			组类别1：
+				管理员组
+				普通用户组
+					系统用户组
+					登录用户组
+				组标识：GroupID --> GID
+					普通用户组：1-65535，一般只用到60000
+							系统用户组：1-999(centos7), 1-499(centos5-6)
+							登录用户组：1000-60000(centos7)，500-60000(centos5-6)
+				名称解析：groupname <--> gid
+					解析库：/etc/group
+				
+			组类别2：
+				用户的主/基本组
+				用户的附加组
+			组类别3：
+				用户的私有组：组名同用户名，且只包含一个用户
+				公共组：组内包含多个用户
+		认证信息：
+			通过比对事先存储的与登录时提供的信息是否一致；
+			password保存：
+				转换为加密格式，单向加密方式；
+				早期放在/etc/passwd但是这个文件所有用户都可以访问和读取，不安全；
+				现在放在/etc/shadow, 普通用户是无法访问的
+				组的密码：/etc/gshadow
+			加密算法：plain text --> cipher text
+				对称加密：加密和解密使用同一个密码；
+				非对称加密：加密解密用的是一对密钥
+					公钥：public key
+					私钥：private key
+				单向加密：只能加密，不能解密，提取数据特征码；
+					定长输出：只是提取指纹，跟原数据的size没有关系
+					雪崩效应：一点点改变会造成加密结果的巨大变大
+						例如：[user01@localhost root]$ echo "how are you?" | md5sum
+								ce55c98ac24d4c7764877fa58ab441ef  -
+							  [user01@localhost root]$ echo "how are you." | md5sum
+								5bd65df962ddf52bc545606a44959778  -
+							  [user01@localhost root]$ echo "how are you." | sha512sum
+								8b9f6311559dbe47be9b2a29bfde1c7d1b3dafec1f12a7e20c47b94bb80152176c4086ccdc0b0cf814585d6dd6ef0fa0615b2a26b1c334863fe2bc6ffc51d719  -
+							  [user01@localhost root]$ echo "how are you?" | sha512sum
+								ac96798efe19e41490484ba4b8fd611ab2fb2803d35b8e23b4e0c24a773ca90229aae60304a4ded7066389d7997038789d13ab63058dec0c1e2ebd76cd92afc5  -
+							[user01@localhost root]$ echo "how are you?asdsfdfsdfdfgggggggggggggggggggggggggggggggggggggggggggggg" | sha512sum
+								feef74a5d6b7e87befafe39730c0bf31fd246b84b30fad652e0506dc95568f31417e81f72ac4ca1a092c45f3cedec3107093a062ec0474cd8845d8f565520153  -    定长输出
+			算法：
+				md5: message digest, 128bits输出
+				sha: secure hash algorithm, 160bits输出
+				sha256: 256bits输出
+				sha384
+				sha512
+				系统用户密码加密的时候会自动加一些salt（随机数）进去，以避免同样的字符串加密得出同样的加密结果；
+				Linux密码加密后登录验证的过程：
+					首先在设置密码的时候，会通过加密算法将密码字符串加密，这时候会加入salt一起进行加密，得到的加密字符串存放在/etc/shadow文件；
+					登录的时候，用户输入密码后，系统会从/etc/shadow拿出这个用户的salt和输入的密码进行加密，把加密后的密文和存储的密文进行比对就验证成功了；
+	
+	/etc/passwd信息存储的格式：用户信息库
+		使用cat /etc/passwd查看文件，第三个参数:500以上的,就是后面建的用户，其它则为系统的用户.
+			root:x:0:0:root:/root:/bin/bash
+			user01:x:1000:1000:user01:/home/user01:/bin/bash
+			centos:x:1001:1001::/home/centos:/bin/bash
+				存储格式：name:password:UID:GID:GECOS:directory:shell
+					如何看passwd命令/文件的使用说明：	
+						whatis passwd, 查看passwd的mannual在哪里
+						man 5 passwd 指定查看passwd在第五章的使用帮助，可以看到以下解释
+						name:password:UID:GID:GECOS:directory:shell
+						password    This is either the encrypted user password, an asterisk (*), or the letter 'x'.  (See pwconv(8) for an explanation of 'x'.)
+				user01 用户名
+				x 密码占位符，影子口令，到/etc/shadow保存密码
+				1000 UID
+				1000 GID 组ID
+				GECOS 用户的附加信息
+				home/centos 用户的家目录
+				/bin/bash 用户的默认shell程序
+	/etc/shadow
+		whatis shadow
+		man 5 shadow
+			shadow - shadowed password file, shadow is a file which contains the password information for the system's accounts and optional aging information.
+			Each line of this file contains 9 fields, separated by colons (“:”), in the following order:
+		密码格式：
+		user01:$6$k2HbLwd4uPF3kMcO$z1C/3eviLes448msR8zqUq3WIG0qN7q5KoxHAyNLbVEJpbfa.TVkExKtjdbEHF4IX2I3/KeFF5OZyEBT3tDuH1::0:99999:7:::
+		$6: 表示用sha5加密
+		$k2HbLwd4uPF3kMcO：salt，不包含$符号
+		$z1C/3eviLes448msR8zqUq3WIG0qN7q5KoxHAyNLbVEJpbfa.TVkExKtjdbEHF4IX2I3/KeFF5OZyEBT3tDuH1： 加密后的字符串，不包含$符号
+		用户名：加密的密码：最近一次次该密码的时间：最短使用期限：最长使用期限：警告期限：过期期限：保留字段		
+				 
+	/etc/group
+		whatis group
+		man group
+			group - user group file The /etc/group file is a text file that defines the groups on the system.  There is one entry per line, with the following format:
+            group_name:password:GID:user_list
+	用户管理的相关命令：
+		useradd, userdel, usermod, passwd, groupadd, groupdel, groupmod, gpasswd, chage, chsh, id, su
+		
+
+	Linux用户和组管理
+		安全上下文：
+			进程：以其发起者的身份运行，进程对文件的访问权限取决于发起此进程的用户的权限；
+			系统用户：为了能够让那些后台进程或服务类进程以非管理员身份运行，通常需要为此创建多个普通用户，这类用户不用登录系统；
+		groupadd: 组创建命令
+			-g GID:指定GID，默认是上一个组的GID+1
+			-r: 创建系统组
+				例如：
+				[root@localhost ~]# groupadd test01   增加普通组
+				[root@localhost ~]# groupadd -r testroot   增加系统组
+				[root@localhost ~]# tail /etc/group
+				gnome-initial-setup:x:986:
+				stapusr:x:156:
+				stapsys:x:157:
+				stapdev:x:158:
+				tcpdump:x:72:
+				avahi:x:70:
+				slocate:x:21:
+				centos:x:1001:
+				test01:x:1002:		普通组的GID是在1000-6000	
+				testroot:x:985:		系统组的GID是在1-999
+		groupmod: 修改组属性
+			groupmod [选项] GROUP
+				-g GID: 修改GID
+				-n new_name: 修改组名
+		groupdel: 删除组
+			groupdel GROUP
+		
+		useradd: 创建用户
+			[root@localhost ~]# which adduser
+			/usr/sbin/adduser
+			[root@localhost ~]# file `which adduser`   命令引用，不知道为什么，用管道不行：which adduser | file
+			/usr/sbin/adduser: symbolic link to `useradd'
+
+			-u, 指定UID
+			-g, 指定基本组ID，此组得事先存在
+			
+			听到第四天 第三课时
+
+
+
+	
+		
+							
+							
+								
+
+
+				
+								
+						
+						
+
+		
+				
+				
+			
+		
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		
+
