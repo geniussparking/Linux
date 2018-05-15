@@ -1,0 +1,373 @@
+man : help
+man ls: view the help of "ls"
+ls: current folder contents;
+ls Desktop: view the contents of folder Desktop
+ls -l: the details of the current folder;
+ls ../ : upper folder content;
+ls ./ equal to ls;
+ctrl shift + :  zoom +
+ctrl - :  zoom -
+ctrl l: clear the whole screen
+ctrl u: clear the current line
+pwd: current direction; 
+man pwd: view the help of pwd; 
+cd: change directions;
+ls, pwd, cd: use together
+cd ~ : user main folder --> cd <==>cd~
+cd : user main folder;
+cd - : last folder;
+cd /  :  root folder
+cd /etc:  go to etc directly
+mkdir test: create test folder; also can create multiple folders using one cmd;
+rmdir test: remove test folder, but only can remove empty folder; can delete multiple folders
+touch aa.txt:  create file aa.txt;  also can create multiple files using one cmd
+rm aa.txt: delete file aa.txt;  also can remove multiple files;
+rm *.txt; delete all .txt files;
+mkdir a b c; create three folders using one cmd;
+mkdir -p aa/bb/cc: create three levels of folders, add -p; 
+rmdir -p aa/bb/cc: delete multiple levels of folder:
+rm -rf a: delete all files and folders in folder a, include a; 
+cp a.txt a.txt.bak:  copy file a.txt as a.txt.bak;
+cp a.txt a/a.txt.bak: copy file a.txt to a folder and name as a.txt.bak;
+cp a.txt a/: copy file to folder a, but don't rename;
+cp a.txt ../: copy to father folder;
+mv: mv source file des file,  move files; 
+mv a/a.txt ./  move a/a.txt to the current folder;
+mv a b:  rename folder a to b
+cat filename: print contents of the file
+tac
+head
+more
+less
+tail
+tar
+gzip
+bzip2
+gunzip
+bunzip2
+which
+whereis
+locate  
+sudo updatedb
+find
+find ./ -name 'af*'
+find ~/ -name 'af*'
+
+
+
+ls   默认方式显示当前目录下的文件列表
+ls -a 显示所有文件包括隐藏文件；以. 开头的文件表示隐藏文件，创建文件的时候也可以以.开头，这样文件会使隐藏文件
+ls -l  显示当前目录下文件属性：大小 权限 日期 符号连接等等
+ls -lh 以K G M显示文件大小
+ls -t  按照创建时间来显示文件
+cd 进入目录
+pws 当前目录
+cd /   切换到根目录
+cd ~  进入到工作目录
+touch test.txt  创建文件test.txt
+mkdir test2 创建文件夹
+mkdir -p dir1/dir2/dir3  创建多级目录需要加一个-p
+
+ln: 创建连接  
+
+本质：文件内容存在内存中，创建一个连接，也指向了这个地址，修改软/硬链接都会修改文件的内容。
+ln -s source target: 创建软连接（类似快捷方式），删除源文件，这个连接文件失效，软连接可以跨文件系统。修改其中一个，另外一个也改变。可以给目录创建软连接。
+
+ln source target: 创建硬连接  文件别名，（复制了一份，修改其中一个，另外一个也改变）。只有当文件连接个数为0时才会被删除。不能给目录创建硬链接。
+
+实例：
+user@ubuntu:~/test$ ln -s 1.txt 1-1.txt
+user@ubuntu:~/test$ ls -l
+total 12
+lrwxrwxrwx 1 user user    5 1月  30 12:47 1-1.txt -> 1.txt    （软连接）
+-rw-rw-r-- 1 user user    0 1月  30 12:39 1.txt
+-rw-rw-r-- 1 user user    0 1月  30 12:39 2.txt
+-rw-rw-r-- 1 user user    0 1月  30 12:39 3.txt
+drwxrwxr-x 3 user user 4096 1月  30 12:34 dir1
+drwxrwxr-x 2 user user 4096 1月  30 12:40 test
+-rw-rw-r-- 1 user user    0 1月  30 12:46 test2.txt
+-rw-rw-r-- 1 user user   45 1月  20 14:16 test.txt
+user@ubuntu:~/test$ ln 1.txt 1-2.txt
+user@ubuntu:~/test$ ls -l
+total 12
+lrwxrwxrwx 1 user user    5 1月  30 12:47 1-1.txt -> 1.txt
+-rw-rw-r-- 2 user user    0 1月  30 12:39 1-2.txt   （硬连接）
+-rw-rw-r-- 2 user user    0 1月  30 12:39 1.txt
+-rw-rw-r-- 1 user user    0 1月  30 12:39 2.txt
+-rw-rw-r-- 1 user user    0 1月  30 12:39 3.txt
+drwxrwxr-x 3 user user 4096 1月  30 12:34 dir1
+drwxrwxr-x 2 user user 4096 1月  30 12:40 test
+-rw-rw-r-- 1 user user    0 1月  30 12:46 test2.txt
+-rw-rw-r-- 1 user user   45 1月  20 14:16 test.txt
+
+常见vi命令，查看： https://zhidao.baidu.com/question/332242228.html 
+
+rm：删除文件
+
+cp：拷贝命令
+cp test1 test2 : 文件test1复制成test2
+cp /dir1/dir2/test1 .  : 将文件夹/dir1/dir2/下的test1文件复制到当前文件夹
+cp -r /dir1 /dir2 : 将目录/dir1复制成/dir2，注意复制目录需要加-r
+
+rm test.txt： 删除文件
+rm -f test.txt: 删除文件不进行提示
+rm -r dir: 删除文件夹
+rm -rf dir: 删除文件夹，不进行提示
+
+
+系统命令：
+top: 实时显示系统中各进程资源使用情况
+df: 检查文件系统磁盘空间使用情况  df -h  更详细信息
+du: 查看一个目录或者文件占用磁盘空间的大小  du -h
+man:帮助命令
+diff: 比较两个文件不同
+ps:  显示当前进程
+ps -ux: 显示当前用户进程信息
+ps -aux: 显示所有用户的进程信息
+ps -ex： 显示进程所有信息
+kill: 结束某个进程  kill 8971, 8971是进程号
+killall python test.py:  结束某个进程名下所有的进程
+kill -9 1023: 强制结束进程号为1023的进程
+
+解压缩命令：
+gzip: 压缩文件，gz格式
+gzip -v 1.txt: 生成1.txt.gz并且代替1.txt
+gzip -d sogou.deb.gz: 解压缩，并替代源文件
+gunzip sogou.deb.gz：解压缩，并替代源文件
+
+解压缩命令：
+zip, unzip: 解压缩文件，.zip格式
+zip 1.zip 1.txt: 1.txt压缩生成1.zip，不会替换掉源文件，压缩比例差一些
+unzip 1.zip: 解压
+
+tar： 归档压缩
+tar cvf 1.tar.gz 1.txt: 1.txt压缩生成1.tar.gz        c是压缩，v是显示过程，f是文件，这种压缩反而更大了，因为包含很多文件头部
+tar xvf 1.tar.gz: 解压缩1.tar.gz  
+
+tar czvf 1.tar.gz 1.txt: 1.txt压缩生成1.tar.gz    这种方式更加专业，压缩率更大
+tar xzvf 1.tar.gz: 解压缩 1.tar.gz
+
+tar cjvf 1.tar.bz2 1.txt: 1.txt压缩成1.tar.bz2 格式：.bz2
+tar xjvf 1.tar.bz2:  解压缩
+tar xjvf 1.tar.bz2 -C test1/  解压缩到指定文件夹
+
+rm *  直接删除掉当前目录所有的文件
+
+
+vim基本操作：
+vim是vi的升级版，有更强大的功能
+sudo apt-get install vim  安装更新vim
+让vim自动显示行号：vim   ~/.vimrc打开后是一个空文件，添加 set nu，保存退出
+
+vim 1.txt: 打开文件
+
+vim normal  → insert:
+i: 从当前光标位置插入字符
+I: 从行首插入字符
+
+a: 从光标下一个位置开始插入字符
+A: 从行尾插入字符
+
+o: 当前行向下插入一行
+O: 当前行向上插入一行
+
+vim命令行光标移动:
+h: 光标向左移动
+j: 光标向下移动
+
+k: 光标向上移动
+l: 光标向右移动
+
+gg:光标移动到文件头
+G: 光标移动到文件尾
+
+0: 跳到行首
+$: 跳到行尾
+
+w:跳到下一个单词词首
+
+vim 复制粘贴：
+yy 复制一行
+nyy: 复制n行
+p 当前行下一行粘贴
+P 当前行上一行粘贴
+
+u 撤销
+dd 删除当前行
+ndd 删除n行
+dw 删除一个单词
+D or d$  删除当前位置到行尾
+d0 删除当前位置到行首
+d1 删除当前行和下一行
+d2 删除当前行和下两行
+x 删除一个字符
+r 替换字符
+: w 保存
+:wq  保存退出
+:q 没有修改退出
+:q! 强制退出
+:wq!  保存强制退出，因为权限问题不能退出的时候使用这个
+ZZ 保存退出
+ctrl+z 切换当前vim编辑文件到后台
+再次打开编辑的文件，会提示有冲突，以只读的模式打开编辑后:wq! 强制保存退出
+回到终端，按fg，进入之前切换到后台的文件，按照提示操作，选择load，则load被修改的内容
+
+vim查找内容
+fx: 当前行查找x字符
+Fx: 当前行反向查找x字符
+/test1: 全文查找test1字符串
+/\<test 查找test开头的单词
+n: 查找下一个
+N 查找上一个
+/1..2  查找以1开头，以2结尾的字符串
+
+
+vim替换：
+:s/test/TEST: 当前行第一个test替换为TEST，注意只是替换这一行的
+:s/test/TEST/g: 当前行所有的test替换为TEST
+:m, ns/test/TEST/ : m行到n行每一行第一个test替换成TEST
+:m,ns/test/TEST/g: m行到n行所有test替换为TEST
+:m,$s/test/TEST/g   m到最后一行...
+
+
+vim开多个窗口：
+:sp 2.txt  横向打开一个窗口
+:vsplit 2.txt  纵向打开一个窗口
+ctr+ww  窗口之间切换
+
+visual模式：
+1：normal模式，输入v进入visual模式
+2. 移动光标可以选中内容
+3. 输入y复制内容；p粘贴内容；d删除内容
+
+
+添加用户：
+sudo adduser test 在home下创建名为test的用户，test目录有基本配置脚本
+设置密码
+name信息那里全部回车不用填
+回到home文件夹,输入whoami，会显示当前用户是谁
+su test，输入密码后，成功切换到用户test
+cd ~/ 进入到当前用户的工作目录  或者直接cd回车
+方法二：
+sudo useradd test1 添加用户，不会创建目录，不能登录
+sudo useradd –m test2 添加用户，创建目录，不能登录
+sudo passwd test2 创建密码后才能登录
+
+Linux删除用户：
+sudo userdel test1  删除用户，不删除相关目录
+sudo userdel –r test1  删除用户和相关目录
+
+
+Linux用户组管理:
+sudo groupadd g1  增加用户组
+sudo groupdel  g1 删除用户组
+用户组：具有相同特征的用户的集合，对于某些公共资源可以同时访问
+sudo gpasswd –a user1 g1  将user1添加到用户组g1
+sudo gpasswd –d user1 g1  将user从g1用户组移除
+
+文件权限问题：
+ls –l 文件权限
+第一组参数rwx: 文件所有者读写执行权限
+第二组参数r-x: 用户组的读写执行权限
+第三组参数r-x: 其他用户（第三方）读写执行权限
+
+修改文件权限（不建议使用在组管理，chmod只是用来修改文件权限）：
+chmod 777 test: 修改文件权限，777是读写和执行权限    change mode的意思
+chmod +x test: 文件添加执行权限---对可执行文件
+chmod –x test: 文件去掉执行权限
+例如：
+user@ubuntu:~$ ls -l test.txt
+-rw-rw-r-- 1 user user 0 1月  30 12:28 test.txt      这里看到的权限，第三组只有读rw-rw-r--表示二进制：110 110 100，十进制则是664
+user@ubuntu:~$ chmod 666 test.txt   利用chmod更改了test.txt的权限
+user@ubuntu:~$ ls -l test.txt
+-rw-rw-rw- 1 user user 0 1月  30 12:28 test.txt    第三组也有写权限了，可以利用chmod 664 test.txt改回去文件权限
+
+修改文件用户和用户组：change own  更改所有权，用于组用户，让所有组员拥有组权限。
+chown name1:name2 test.txt  修改文件的用户和用户组，name1代表用户，name2代表用户组
+例如新建了一个组public, 需要给public内所有的组员test.txt读写执行权限，只需要执行：
+sudo chown user:public test.txt 
+
+
+网络配置：
+ifconfig  显示所有网卡信息
+ifconfig eth0  查看网卡名是eth0的网卡信息
+ifconfig eth0 down  禁用网卡eth0
+ifconfig eth0 up 激活网卡eth0
+ifconfig eth0 192.168.1.101  配置网卡eth0的IP地址
+  网络设置：
+sudo route add default gw 192.168.1.1   添加网关
+/etc/network/interfaces restart   重启网络服务
+
+配置DNS：
+sudo vi/etc/resolv.conf
+	nameserver 202.96.134.133
+	nameserver 202.96.128.68
+配置静态IP：
+sudo vi /etc/network/interfaces:
+	auto eth0:0
+	iface eth0 inet static  #配置eth0接口为静态地址
+	address 192.168.1.10
+	gateway 192.168.1.254
+	netmask 255.255.255.0
+	network 192.168.1.0
+	broadcast 192.168.1.255
+抓包：sudo tcpdump -i eth0       ctrl+c结束抓包
+
+
+认识shell
+ *.sh是shell格式文件，可以写成复杂语句的脚本，多linux语句的集合
+第一个shell
+#!/bin/bash
+echo “helloworld”
+#!/bin/bash: 告诉系统这个脚本使用bash来进行解析，bin/bash是默认的解析工具
+
+例子：
+vi test.sh
+进入编辑，写入:
+#!/bin/bash
+echo “helloworld”
+保存退出
+这时候没有对test.sh的执行权限，利用chmod +x test.sh 添加执行权限
+敲入  ./test.sh   执行，获得结果。注意echo后面要有空格
+
+
+这里可以写成
+#!/bin/sh
+echo “helloworld”
+也可以执行，相当于用sh解析而不是bash解析
+
+grep “CHINESE” –r 匹配查找所有含有关键字的文件，并列出。  -r意思是递归的去查找
+grep "this" -r 1.txt  仅在1.txt里面找
+grep "this" -r ./   在当前目录下查找
+find ./ -name \*.txt   在当前目录下查找所有以txt结尾的文件，*前面的\是转移符号
+find ./ -name \*.txt | xargs grep "this" –r   查找到txt文件，并在这些文件里面找有this的。
+|是管道的意思；
+xargs是将参数传入到后面的grep
+
+
+Linux基本服务  服务搭建
+samba服务  设置文件共享
+sudo apt-get install samba
+sudo vi/etc/samba/smb.conf  修改samba配置文件
+
+[share]
+	path = /home/user/share       注：这里的user是当前用户名
+	available = yes
+	browsealbe = yes
+	public = yes
+	writable = yes
+sudo /etc/init.d/samba restart  重启后就可以用了
+
+nfs服务： mount公网上的计算机到本地，也是属于文件共享
+sudo apt-get install nfs-kernel-server
+sudo vi/etc/export
+/home/user/share *(rw,sync,no_root_squash) 写入文件   注：这里的user是当前用户名
+sudo /etc/init.d/nfs-kernel-server restart  重启服务
+
+
+
+
+
+
+
+
